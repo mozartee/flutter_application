@@ -1,14 +1,13 @@
 import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:ost_digital_application/util/constant.dart';
-import 'package:ost_digital_application/util/device.dart';
 import 'package:ost_digital_application/util/handle_error.dart';
 import 'package:ost_digital_application/util/log.dart';
 import 'package:ost_digital_application/util/quick_actions.dart';
 import 'package:ost_digital_application/util/route.dart';
-import 'package:quick_actions/quick_actions.dart';
+import 'package:ost_digital_application/util/shared_preference.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   // 确保初始化完成
@@ -36,12 +35,18 @@ class MyApp extends StatelessWidget {
     if (!Constant.isRelease) {}
   }
 
+  // 当前是否登录
+  String? isLogin() {
+    bool? login = SpUtil.getBool(SharedKey.login);
+    return (login == false) ? RouteGet.login : RouteGet.home;
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteGet.home,
+      initialRoute: isLogin(),
       getPages: RouteGet.getPages,
       title: 'Flutter',
       theme: ThemeData(
