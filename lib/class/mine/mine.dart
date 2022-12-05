@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
 import 'package:get/get.dart';
+import 'package:ost_digital_application/util/language.dart';
 import 'package:ost_digital_application/util/route.dart';
 
 class Mine extends StatelessWidget {
@@ -10,7 +10,7 @@ class Mine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('我的'),
+        title: Text(LanguageKey.mine.tr),
         actions: [
           IconButton(
             onPressed: () {

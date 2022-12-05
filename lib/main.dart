@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
     return (login == false) ? RouteGet.login : RouteGet.home;
   }
 
-  void initLanguage(){
+  void initLanguage() {
     SpUtil.putString(AppLanguageKey.language, LanguageKey.chinese);
   }
 
@@ -56,19 +56,20 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter',
       debugShowCheckedModeBanner: false,
-      checkerboardOffscreenLayers: true, // 检查离屏渲染
+      // checkerboardOffscreenLayers: true, // 检查离屏渲染
       // showSemanticsDebugger: true, // 显示语义视图
       // showPerformanceOverlay: true, // 显示性能标签
 
+      // route
       initialRoute: isLogin(),
       getPages: RouteGet.getPages,
-
+      // theme
       themeMode: currentThemeMode(),
       theme: themeData(isDark: false),
       darkTheme: themeData(isDark: true),
-
+      // locale
       translations: Language(),
-      locale: const Locale('zh', 'CN'),// 跟随系统 Get.deviceLocale
+      locale: const Locale('zh', 'CN'), // 跟随系统 Get.deviceLocale
       fallbackLocale: const Locale('zh', 'CN'),
     );
   }

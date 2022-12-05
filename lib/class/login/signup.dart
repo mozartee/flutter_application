@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ost_digital_application/util/language.dart';
 import 'package:ost_digital_application/util/route.dart';
 
 class SignUp extends StatelessWidget {
@@ -9,7 +10,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('注册')),
+      appBar: AppBar(title: Text(LanguageKey.signup.tr)),
       body: Container(
         color: Colors.white,
         child: Padding(
@@ -18,11 +19,11 @@ class SignUp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '输入您的账号',
+                LanguageKey.signupmessage.tr,
                 style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
               ),
-              const OSTTextField(hintText: 'account'),
-              const OSTTextField(hintText: 'password'),
+              OSTTextField(hintText: LanguageKey.accounthint.tr),
+              OSTTextField(hintText: LanguageKey.pwdhint.tr),
               Container(
                 padding: EdgeInsets.only(top: 20.h),
                 width: double.infinity,
@@ -34,7 +35,7 @@ class SignUp extends StatelessWidget {
                         FocusScope.of(context).requestFocus();
                         Get.toNamed(RouteGet.mine);
                       },
-                      child: const Text('Sign Up')),
+                      child: Text(LanguageKey.signup.tr)),
                 ),
               ),
             ],
