@@ -1,23 +1,23 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:ost_digital_application/util/color.dart';
+import 'package:ost_digital_application/util/device.dart';
+import 'package:ost_digital_application/util/language.dart';
+import 'package:ost_digital_application/util/route.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({Key? key, this.appStart = true}) : super(key: key);
+
+  /// 是否是app直接进入登录页面
+  final bool appStart;
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, designSize: const Size(375, 1136));
+    ScreenUtil.init(context, designSize: designSize);
+
     return Scaffold(
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   title: const Text(
-      //     "Login",
-      //     style: TextStyle(color: OSTColors.navTitle),
-      //   ),
-      //   backgroundColor: OSTColors.navBackground,
-      //   foregroundColor: OSTColors.navForeground,
-      // ),
       body: Container(
         color: OSTColors.background,
         child: SingleChildScrollView(
@@ -33,36 +33,58 @@ class Login extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(15.w, 33.h, 15.w, 33.h),
+                margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 30.h),
                 width: double.infinity,
-                color: Colors.red,
                 alignment: AlignmentDirectional.center,
-                child: const Text(
-                  'We are here to make your holiday easier',
+                child: Text(
+                  LanguageKey.signinmessage.tr,
                   style: TextStyle(
-                    backgroundColor: Colors.blueAccent,
-                    fontSize: 24,
-                    color: Colors.white,
-                  ),
+                      color: Colors.black,
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.w500),
                 ),
               ),
               Container(
-                width: double.infinity,
-                margin: EdgeInsets.fromLTRB(15.w, 0.h, 15.w, 30.w),
-                height: 58.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24.h),
-                  color: const Color(0xff7c73c3),
-                ),
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Get Started',
-                    style: TextStyle(
-                      color: const Color(0xfffefefe),
-                      fontSize: 18.sp,
+                margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: 40.h,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(24.h),
+                        child: TextButton(
+                          onPressed: () {
+                            if (appStart == true) {
+                              Get.offNamed(RouteGet.home);
+                            } else {
+                              Get.toNamed(RouteGet.home);
+                            }
+                          },
+                          child: Text(LanguageKey.signin.tr),
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(height: 10.h),
+                    RichText(
+                      text: TextSpan(
+                        text: LanguageKey.signinnoaccount.tr,
+                        style: const TextStyle(color: Colors.black),
+                        children: [
+                          const TextSpan(text: '  '),
+                          TextSpan(
+                            text: LanguageKey.signup.tr,
+                            style: TextStyle(color: Colors.red.shade300),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Get.toNamed(RouteGet.signup);
+                              },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

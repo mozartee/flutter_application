@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
-import 'package:ost_digital_application/util/color.dart';
 import 'package:ost_digital_application/util/route.dart';
+
+import '../../util/device.dart';
 
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
@@ -13,16 +15,12 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, designSize: designSize);
+
     return Center(
       child: Scaffold(
         appBar: AppBar(
-          elevation: 1,
-          title: const Text(
-            "Home",
-            style: TextStyle(color: OSTColors.navTitle),
-          ),
-          backgroundColor: OSTColors.navBackground,
-          foregroundColor: OSTColors.navForeground,
+          title: const Text("Home"),
           actions: [
             IconButton(
               onPressed: () {

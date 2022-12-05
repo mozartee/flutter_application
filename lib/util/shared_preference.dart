@@ -9,3 +9,13 @@ class SharedKey {
   /// 登录
   static const login = 'login_key';
 }
+
+class AppThemeKey {
+  /// 主题
+  static const String theme = 'appTheme';
+}
+
+class AppLanguageKey {
+  /// 语言
+  static const String language = 'language';
+}

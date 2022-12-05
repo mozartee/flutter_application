@@ -8,13 +8,7 @@ class HomeDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Home Detail",
-          style: TextStyle(color: OSTColors.navTitle),
-        ),
-        backgroundColor: OSTColors.navBackground,
-        foregroundColor: OSTColors.navForeground,
-        elevation: 1,
+        title: const Text("Home Detail"),
       ),
       body: Container(
         color: OSTColors.background,

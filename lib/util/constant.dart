@@ -5,6 +5,6 @@ import 'package:flutter/foundation.dart';
 final ScreenUtil screenUtilShared = ScreenUtil.getInstance();
 
 class Constant {
-  // true: 线上环境
+  /// true: 线上环境
   static const bool isRelease = kReleaseMode;
 }
