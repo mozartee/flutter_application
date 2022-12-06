@@ -3,11 +3,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-/// ScreenUtil Design Size
+/// ScreenUtil App Design Size
 const designSize = Size(375, 696);
-
-/// navgationBar actions icon size
-const navActionIconSize = 30.0;
 
 class Device {
   static bool get isDesktop => !isWeb && (isWindows || isLinux || isMacOS);

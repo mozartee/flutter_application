@@ -11,35 +11,32 @@ class SignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(LanguageKey.signup.tr)),
-      body: Container(
-        color: Colors.white,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                LanguageKey.signupmessage.tr,
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              LanguageKey.signupmessage.tr,
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
+            ),
+            OSTTextField(hintText: LanguageKey.accounthint.tr),
+            OSTTextField(hintText: LanguageKey.pwdhint.tr),
+            Container(
+              padding: EdgeInsets.only(top: 20.h),
+              width: double.infinity,
+              height: 60.h,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24.h),
+                child: TextButton(
+                    onPressed: () {
+                      FocusScope.of(context).requestFocus();
+                      Get.toNamed(RouteGet.mine);
+                    },
+                    child: Text(LanguageKey.signup.tr)),
               ),
-              OSTTextField(hintText: LanguageKey.accounthint.tr),
-              OSTTextField(hintText: LanguageKey.pwdhint.tr),
-              Container(
-                padding: EdgeInsets.only(top: 20.h),
-                width: double.infinity,
-                height: 60.h,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(24.h),
-                  child: TextButton(
-                      onPressed: () {
-                        FocusScope.of(context).requestFocus();
-                        Get.toNamed(RouteGet.mine);
-                      },
-                      child: Text(LanguageKey.signup.tr)),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

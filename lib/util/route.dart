@@ -1,13 +1,21 @@
 import 'package:get/route_manager.dart';
+import 'package:ost_digital_application/class/splash/splash.dart';
 
-import '../class/home_detail/home_detail.dart';
+import '../class/tabbar/tabbar.dart';
 import '../class/home/home.dart';
+import '../class/home/home_detail.dart';
 import '../class/login/login.dart';
 import '../class/login/signup.dart';
 import '../class/mine/mine.dart';
 import '../class/mine/setting.dart';
 
 class RouteGet {
+  /// splash
+  static const splash = '/splash';
+
+  /// tabbar
+  static const tabbar = '/tabbar';
+
   /// 登录
   static const login = '/login';
 
@@ -34,6 +42,8 @@ class RouteGet {
 
 // pages map
   static final List<GetPage> getPages = [
+    GetPage(name: splash, page: () => Splash()),
+    GetPage(name: tabbar, page: () => Tabbar()),
     GetPage(name: login, page: () => const Login()),
     GetPage(name: signup, page: () => const SignUp()),
     GetPage(name: home, page: () => Home()),

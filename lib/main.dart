@@ -1,8 +1,7 @@
-import 'package:flustars_flutter3/flustars_flutter3.dart';
+import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
-import 'package:ost_digital_application/util/color.dart';
 import 'package:ost_digital_application/util/constant.dart';
 import 'package:ost_digital_application/util/device.dart';
 import 'package:ost_digital_application/util/handle_error.dart';
@@ -40,14 +39,18 @@ class MyApp extends StatelessWidget {
     if (!Constant.isRelease) {}
   }
 
-  // 当前是否登录
-  String? isLogin() {
-    bool? login = SpUtil.getBool(SharedKey.login);
-    return (login == false) ? RouteGet.login : RouteGet.home;
+  String? initialRoute() {
+    return Share.notFirstDisplay() == false
+        ? RouteGet.splash
+        : Share.login() == false
+            ? RouteGet.login
+            : RouteGet.tabbar;
   }
 
   void initLanguage() {
     SpUtil.putString(AppLanguageKey.language, LanguageKey.chinese);
+    // set splash for test.
+    // SpUtil.putBool(SharedKey.splash, false);
   }
 
   // This widget is the root of your application.
@@ -61,11 +64,11 @@ class MyApp extends StatelessWidget {
       // showPerformanceOverlay: true, // 显示性能标签
 
       // route
-      initialRoute: isLogin(),
+      initialRoute: initialRoute(),
       getPages: RouteGet.getPages,
       // theme
       themeMode: currentThemeMode(),
-      theme: themeData(isDark: false),
+      theme: themeData(),
       darkTheme: themeData(isDark: true),
       // locale
       translations: Language(),

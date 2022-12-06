@@ -19,20 +19,17 @@ class Setting extends StatelessWidget {
       appBar: AppBar(
         title: Text(LanguageKey.setting.tr),
       ),
-      body: Container(
-        color: Colors.white,
-        child: ListView(
-          children: [
-            OSTListTile(
-              text: LanguageKey.themechange.tr,
-              onTap: () => Get.toNamed(RouteGet.themeChange),
-            ),
-            OSTListTile(
-              text: LanguageKey.languagechange.tr,
-              onTap: () => Get.toNamed(RouteGet.languageChange),
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          OSTListTile(
+            text: LanguageKey.themechange.tr,
+            onTap: () => Get.toNamed(RouteGet.themeChange),
+          ),
+          OSTListTile(
+            text: LanguageKey.languagechange.tr,
+            onTap: () => Get.toNamed(RouteGet.languageChange),
+          ),
+        ],
       ),
     );
   }
@@ -48,23 +45,19 @@ class ThemeChange extends StatelessWidget {
       appBar: AppBar(
         title: Text(LanguageKey.themechange.tr),
       ),
-      body: Container(
-        color: Colors.white,
-        child: ListView(
-          children: [
-            OSTListTile(
-              text: LanguageKey.themechangelight.tr,
-              trailing:
-                  Get.isDarkMode == false ? const Icon(Icons.check) : null,
-              onTap: () => _changeTheme(index: 0),
-            ),
-            OSTListTile(
-              text: LanguageKey.themechangedark.tr,
-              trailing: Get.isDarkMode == true ? const Icon(Icons.check) : null,
-              onTap: () => _changeTheme(index: 1),
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          OSTListTile(
+            text: LanguageKey.themechangelight.tr,
+            trailing: Get.isDarkMode == false ? const Icon(Icons.check) : null,
+            onTap: () => _changeTheme(index: 0),
+          ),
+          OSTListTile(
+            text: LanguageKey.themechangedark.tr,
+            trailing: Get.isDarkMode == true ? const Icon(Icons.check) : null,
+            onTap: () => _changeTheme(index: 1),
+          ),
+        ],
       ),
     );
   }
@@ -72,15 +65,23 @@ class ThemeChange extends StatelessWidget {
   void _changeTheme({int index = 0}) {
     if (index == 0) {
       if (Get.isDarkMode == true) {
-        SpUtil.putString(AppThemeKey.theme, ThemeMode.dark.value);
+        SpUtil.putString(AppThemeKey.theme, ThemeMode.light.value);
         Get.changeTheme(ThemeData.light());
-        Get.back();
+
+        Future.delayed(const Duration(seconds: 1)).then((value) {
+          // Get.forceAppUpdate();
+          Get.back();
+        });
       }
     } else if (index == 1) {
       if (Get.isDarkMode == false) {
-        SpUtil.putString(AppThemeKey.theme, ThemeMode.light.value);
+        SpUtil.putString(AppThemeKey.theme, ThemeMode.dark.value);
         Get.changeTheme(ThemeData.dark());
-        Get.back();
+
+        Future.delayed(const Duration(seconds: 1)).then((value) {
+          // Get.forceAppUpdate();
+          Get.back();
+        });
       }
     }
   }
@@ -98,22 +99,19 @@ class ChangeLanguage extends StatelessWidget {
       appBar: AppBar(
         title: Text(LanguageKey.languagechange.tr),
       ),
-      body: Container(
-        color: Colors.white,
-        child: ListView(
-          children: [
-            OSTListTile(
-              text: LanguageKey.languagechangecn.tr,
-              trailing: isCN == true ? const Icon(Icons.check) : null,
-              onTap: () => _changeLanguage(index: 0),
-            ),
-            OSTListTile(
-              text: LanguageKey.languagechangeen.tr,
-              trailing: isCN == false ? const Icon(Icons.check) : null,
-              onTap: () => _changeLanguage(index: 1),
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          OSTListTile(
+            text: LanguageKey.languagechangecn.tr,
+            trailing: isCN == true ? const Icon(Icons.check) : null,
+            onTap: () => _changeLanguage(index: 0),
+          ),
+          OSTListTile(
+            text: LanguageKey.languagechangeen.tr,
+            trailing: isCN == false ? const Icon(Icons.check) : null,
+            onTap: () => _changeLanguage(index: 1),
+          ),
+        ],
       ),
     );
   }
