@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/class/home/home.dart';
 import 'package:ost_digital_application/class/mine/mine.dart';
-import 'package:ost_digital_application/util/language.dart';
+
+import '../../common/lang/keys.dart';
 
 class Tabbar extends StatelessWidget {
   Tabbar({Key? key}) : super(key: key);
 
   final List<Widget> _controllers = [Home(), const Mine()];
   final List<String> _labels = [
-    LanguageKey.tabbarhome.tr,
-    LanguageKey.tabbarmine.tr,
+    Languages.tabbarhome.tr,
+    Languages.tabbarmine.tr,
   ];
   final List<IconData> _icons = [Icons.home_max, Icons.people_outline];
 

@@ -2,9 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/util/device.dart';
-import 'package:ost_digital_application/util/language.dart';
-import 'package:ost_digital_application/util/route.dart';
+import 'package:ost_digital_application/common/constant.dart';
+import 'package:ost_digital_application/common/device.dart';
+import 'package:ost_digital_application/common/routes/route.dart';
+
+import '../../common/lang/keys.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key, this.appStart = true}) : super(key: key);
@@ -14,7 +16,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, designSize: designSize);
+    // ScreenUtil.init(context, designSize: designSize);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -34,7 +36,7 @@ class Login extends StatelessWidget {
               width: double.infinity,
               alignment: AlignmentDirectional.center,
               child: Text(
-                LanguageKey.signinmessage.tr,
+                Languages.signinmessage.tr,
                 style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w500),
               ),
             ),
@@ -43,36 +45,35 @@ class Login extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 40.h,
+                  Gap.whc(
+                    h: 40,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(24.h),
                       child: TextButton(
                         onPressed: () {
                           if (appStart == true) {
-                            Get.offNamed(RouteGet.tabbar);
+                            Get.offNamed(Routes.tabbar);
                           } else {
-                            Get.toNamed(RouteGet.tabbar);
+                            Get.toNamed(Routes.tabbar);
                           }
                         },
-                        child: Text(LanguageKey.signin.tr),
+                        child: Text(Languages.signin.tr),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  Gap.h.dp10,
                   RichText(
                     text: TextSpan(
-                      text: LanguageKey.signinnoaccount.tr,
+                      text: Languages.signinnoaccount.tr,
                       style: Theme.of(context).textTheme.subtitle1,
                       children: [
                         const TextSpan(text: '  '),
                         TextSpan(
-                          text: LanguageKey.signup.tr,
+                          text: Languages.signup.tr,
                           style: TextStyle(color: Colors.red.shade300),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Get.toNamed(RouteGet.signup);
+                              Get.toNamed(Routes.signup);
                             },
                         ),
                       ],

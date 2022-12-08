@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/util/language.dart';
-import 'package:ost_digital_application/util/route.dart';
 
-import '../../util/device.dart';
+import '../../common/device.dart';
+import '../../common/lang/keys.dart';
+import '../../common/routes/key.dart';
 
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
@@ -13,17 +13,17 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, designSize: designSize);
+    // ScreenUtil.init(context, designSize: designSize);
 
     return Center(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(LanguageKey.home.tr),
+          title: Text(Languages.home.tr),
           actions: [
             IconButton(
               onPressed: () {
                 Get.toNamed(
-                  RouteGet.homeDetail,
+                  Routes.homeDetail,
                   arguments: {"name": "Jaxo", "years": 19},
                 );
               },

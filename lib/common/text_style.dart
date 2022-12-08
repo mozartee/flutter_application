@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ost_digital_application/util/font.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ost_digital_application/common/font.dart';
 
 import 'color.dart';
 
@@ -15,13 +16,13 @@ class OSTTextStyle {
   static TextStyle textBold24 =
       TextStyle(fontSize: FontSize.sp24, fontWeight: FontWeight.bold);
 
-  static TextStyle navTitle = const TextStyle(
-    fontSize: 17,
+  static TextStyle navTitle = TextStyle(
+    fontSize: 17.sp,
     fontWeight: FontWeight.w600,
     color: OSTColors.navTitle,
   );
-  static TextStyle navTitleDark = const TextStyle(
-    fontSize: 17,
+  static TextStyle navTitleDark = TextStyle(
+    fontSize: 17.sp,
     fontWeight: FontWeight.w600,
     color: OSTColors.navTitleDark,
   );

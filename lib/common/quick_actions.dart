@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ost_digital_application/util/route.dart';
+import 'package:ost_digital_application/common/routes/route.dart';
 import 'package:quick_actions/quick_actions.dart';
 
 import 'device.dart';
@@ -18,12 +18,12 @@ void initQuickActions() {
       switch (shortcutType) {
         case firstCutType:
           {
-            Get.toNamed(RouteGet.home);
+            Get.toNamed(Routes.home);
           }
           break;
         case secondCutType:
           {
-            Get.toNamed(RouteGet.homeDetail);
+            Get.toNamed(Routes.homeDetail);
           }
           break;
         default:

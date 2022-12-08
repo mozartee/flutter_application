@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/util/language.dart';
-import 'package:ost_digital_application/util/route.dart';
+import 'package:ost_digital_application/common/routes/route.dart';
+
+import '../../common/lang/keys.dart';
 
 class Mine extends StatelessWidget {
   const Mine({Key? key}) : super(key: key);
@@ -10,11 +11,11 @@ class Mine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(LanguageKey.mine.tr),
+        title: Text(Languages.mine.tr),
         actions: [
           IconButton(
             onPressed: () {
-              Get.toNamed(RouteGet.setting);
+              Get.toNamed(Routes.setting);
             },
             icon: const Icon(Icons.settings),
           ),

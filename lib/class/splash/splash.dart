@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/util/assets.dart';
-import 'package:ost_digital_application/util/device.dart';
-import 'package:ost_digital_application/util/language.dart';
-import 'package:ost_digital_application/util/route.dart';
+import 'package:ost_digital_application/common/assets.dart';
+import 'package:ost_digital_application/common/device.dart';
+import 'package:ost_digital_application/common/routes/route.dart';
 
-import '../../util/shared_preference.dart';
+import '../../common/lang/keys.dart';
+import '../../common/shared_preference.dart';
 
 class Splash extends StatelessWidget {
   Splash({Key? key}) : super(key: key);
@@ -38,10 +38,11 @@ class Splash extends StatelessWidget {
                 width: 120.w,
                 height: 40.h,
                 child: TextButton(
-                  child: Text(LanguageKey.splashbutton.tr),
+                  child: Text(Languages.splashbutton.tr),
                   onPressed: () {
-                    Get.offNamed(
-                        Share.login() == true ? RouteGet.tabbar : RouteGet.login);
+                    Get.offNamed(Share.login() == true
+                        ? Routes.tabbar
+                        : Routes.login);
                     SpUtil.putBool(SharedKey.splash, true);
                   },
                 ),

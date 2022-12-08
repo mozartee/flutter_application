@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ost_digital_application/util/color.dart';
+import 'package:ost_digital_application/common/color.dart';
 
 class HomeDetail extends StatelessWidget {
   const HomeDetail({Key? key}) : super(key: key);
