@@ -1,11 +1,11 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/common/constant.dart';
-import 'package:ost_digital_application/common/device.dart';
-import 'package:ost_digital_application/common/routes/route.dart';
 
+import '/common/constant.dart';
+import '/common/routes/header.dart';
 import '../../common/lang/keys.dart';
 
 class Login extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/common/routes/route.dart';
+import 'package:ost_digital_application/common/routes/header.dart';
 
-import '../../common/lang/keys.dart';
+import '../../common/lang/header.dart';
 
 class Mine extends StatelessWidget {
   const Mine({Key? key}) : super(key: key);

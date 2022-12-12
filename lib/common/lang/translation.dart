@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../shared_preference.dart';
-import 'route.dart';
+import 'header.dart';
 
 class LanguageTranslations extends Translations {
   static Locale? get locale {
     String? language = SpUtil.getString(AppLanguageKey.language);
-    if (language != null) {
+    if (language != null && language.isNotEmpty) {
       if (language == Languages.chinese) return _chineseLocale;
       return _englishLocale;
     } else {
@@ -33,7 +33,6 @@ class LanguageTranslations extends Translations {
     }
   }
 
-  //=> Get.deviceLocale; //Locale('zh', 'CN');
   static const fallbackLocale = Locale('zh', 'CN');
 
   static const _chineseLocale = Locale('zh', 'CN');

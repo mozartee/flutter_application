@@ -1,19 +1,17 @@
-import 'package:ost_digital_application/class/mine/language/bindings.dart';
+import 'package:get/get.dart';
 
 import '../../class/home/home.dart';
 import '../../class/home/home_detail.dart';
 import '../../class/login/login.dart';
 import '../../class/login/signup.dart';
-import '../../class/mine/language/view.dart';
 import '../../class/mine/mine.dart';
 import '../../class/mine/setting.dart';
-import '../../class/mine/theme.dart';
 import '../../class/splash/splash.dart';
 import '../../class/tabbar/tabbar.dart';
 
-import 'package:get/get.dart';
-
-import 'route.dart';
+import '../../class/mine/theme/header.dart';
+import '../../class/mine/language/header.dart';
+import 'header.dart';
 
 List<GetPage> getPages() => [
       GetPage(name: Routes.splash, page: () => Splash()),
@@ -24,7 +22,11 @@ List<GetPage> getPages() => [
       GetPage(name: Routes.homeDetail, page: () => const HomeDetail()),
       GetPage(name: Routes.mine, page: () => const Mine()),
       GetPage(name: Routes.setting, page: () => const Setting()),
-      GetPage(name: Routes.themeChange, page: () => const ThemeChange()),
+      GetPage(
+        name: Routes.themeChange,
+        page: () => const ThemeChange(),
+        binding: ThemeChangeBindings(),
+      ),
       GetPage(
         name: Routes.languageChange,
         page: () => const LanguageChange(),

@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
-import 'package:ost_digital_application/common/routes/route.dart';
+
 import 'package:quick_actions/quick_actions.dart';
 
+import '../common/routes/header.dart';
 import 'device.dart';
 
 ///

@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/class/mine/language/controller.dart';
 
-import '../../../common/lang/route.dart';
-import '../../../common/shared_preference.dart';
-import '../../../widget/list_tile.dart';
+import '/common/lang/header.dart';
+import '/common/shared_preference.dart';
+import '/widget/list_tile.dart';
+import 'controller.dart';
 
 class LanguageChange extends GetView<LanguageController> {
   const LanguageChange({Key? key}) : super(key: key);
-
-  // final controller = Get.put(LanguageController());
 
   @override
   Widget build(BuildContext context) {

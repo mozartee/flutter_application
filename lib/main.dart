@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:ost_digital_application/common/constant.dart';
-import 'package:ost_digital_application/common/handle_error.dart';
-import 'package:ost_digital_application/common/lang/translation.dart';
-import 'package:ost_digital_application/common/log.dart';
-import 'package:ost_digital_application/common/quick_actions.dart';
-import 'package:ost_digital_application/common/routes/route.dart';
-import 'package:ost_digital_application/common/shared_preference.dart';
-
+import 'package:get/get.dart';
 import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
-import 'package:get/route_manager.dart';
 
+import '/common/constant.dart';
+import '/common/handle_error.dart';
+import '/common/lang/translation.dart';
+import '/common/log.dart';
+import '/common/quick_actions.dart';
+import '/common/routes/header.dart';
+import '/common/shared_preference.dart';
 import 'common/device.dart';
-import 'common/lang/keys.dart';
-import 'common/theme/route.dart';
+import 'common/theme/header.dart';
 
 Future<void> main() async {
   // 确保初始化完成
@@ -52,7 +50,7 @@ class MyApp extends StatelessWidget {
   }
 
   void initLanguage() {
-    SpUtil.putString(AppLanguageKey.language, Languages.chinese);
+    // SpUtil.putString(AppLanguageKey.language, Languages.chinese);
     // set splash for test.
     // SpUtil.putBool(SharedKey.splash, false);
   }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../common/routes/route.dart';
-import '../../common/lang/keys.dart';
+import '../../common/routes/header.dart';
+import '../../common/lang/header.dart';
 import '../../widget/list_tile.dart';
 
 class Setting extends StatelessWidget {

@@ -1,12 +1,13 @@
-import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
 import 'package:flutter/material.dart';
+
+import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/common/assets.dart';
-import 'package:ost_digital_application/common/device.dart';
-import 'package:ost_digital_application/common/routes/route.dart';
 
+import '/common/assets.dart';
+import '/common/device.dart';
+import '/common/routes/header.dart';
 import '../../common/lang/keys.dart';
 import '../../common/shared_preference.dart';
 
@@ -40,9 +41,8 @@ class Splash extends StatelessWidget {
                 child: TextButton(
                   child: Text(Languages.splashbutton.tr),
                   onPressed: () {
-                    Get.offNamed(Share.login() == true
-                        ? Routes.tabbar
-                        : Routes.login);
+                    Get.offNamed(
+                        Share.login() == true ? Routes.tabbar : Routes.login);
                     SpUtil.putBool(SharedKey.splash, true);
                   },
                 ),
