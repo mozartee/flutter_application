@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/common/constant.dart';
-import 'package:ost_digital_application/common/routes/header.dart';
-import 'package:ost_digital_application/widget/alert.dart';
 
+import '/common/routes/header.dart';
+import '/widget/alert.dart';
+import '../../common/gap.dart';
 import '../../common/lang/header.dart';
 import '../../widget/textfield.dart';
 

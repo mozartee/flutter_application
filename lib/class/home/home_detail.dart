@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ost_digital_application/common/color.dart';
+
+import '../../common/assets.dart';
 
 class HomeDetail extends StatelessWidget {
   const HomeDetail({Key? key}) : super(key: key);
@@ -10,8 +11,13 @@ class HomeDetail extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Home Detail"),
       ),
-      body: Container(
-        color: OSTColors.background,
+      body: Center(
+        child: Assets.loadImage(
+          '02',
+          format: ImageFormat.svg,
+          width: 300,
+          height: 300,
+        ),
       ),
     );
   }

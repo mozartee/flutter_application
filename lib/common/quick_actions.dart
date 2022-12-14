@@ -5,11 +5,7 @@ import 'package:quick_actions/quick_actions.dart';
 import '../common/routes/header.dart';
 import 'device.dart';
 
-///
-/// 这里做一些 QuickActions 的操作
-///
-
-// App图标长按进入快捷方式功能
+/// App图标长按进入快捷方式功能
 void initQuickActions() {
   const firstCutType = 'first cut';
   const secondCutType = 'second cut';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ost_digital_application/common/assets.dart';
+import 'package:ost_digital_application/widget/loading.dart';
 
-import '../../common/device.dart';
 import '../../common/lang/keys.dart';
 import '../../common/routes/key.dart';
 
@@ -22,10 +22,12 @@ class Home extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                Get.toNamed(
-                  Routes.homeDetail,
-                  arguments: {"name": "Jaxo", "years": 19},
-                );
+                Loading.show(
+                    'this is a long long long long text,to show anything!');
+                // Get.toNamed(
+                //   Routes.homeDetail,
+                //   arguments: {"name": "Jaxo", "years": 19},
+                // );
               },
               icon: const Icon(Icons.next_plan),
             )
@@ -37,8 +39,13 @@ class Home extends StatelessWidget {
   }
 
   buildBody() {
-    return const Center(
-      child: Text('Home'),
+    return Center(
+      child: Assets.loadImage(
+        '01',
+        format: ImageFormat.svg,
+        width: 300,
+        height: 300,
+      ),
     );
   }
 }

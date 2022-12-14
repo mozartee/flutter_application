@@ -6,6 +6,7 @@ const Map<String, String> en_US = {
   Languages.chinese: 'Chinese',
   Languages.english: 'English',
   Languages.splashbutton: 'Get Started',
+  Languages.loadingDefaultStatus: 'Loading',
   Languages.tabbarhome: 'Home',
   Languages.tabbarmine: 'Mine',
   Languages.signin: 'Get Started',

@@ -43,7 +43,7 @@ class Splash extends StatelessWidget {
                   onPressed: () {
                     Get.offNamed(
                         Share.login() == true ? Routes.tabbar : Routes.login);
-                    SpUtil.putBool(SharedKey.splash, true);
+                    SpUtil.putBool(PageKey.splash, true);
                   },
                 ),
               ),

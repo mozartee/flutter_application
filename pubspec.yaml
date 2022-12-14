@@ -37,9 +37,19 @@ dependencies:
   # 状态管理
   get: ^4.5.1
   # Toast插件 https://github.com/OpenFlutter/flutter_oktoast
-  oktoast: ^3.3.0
+
+  # toast
+  # oktoast: ^3.3.0
+  # fluttertoast: ^8.1.2
+  flutter_easyloading: ^3.0.5
+  flutter_easyrefresh: ^2.2.2
+
+
   # 网络库 https://github.com/flutterchina/dio
   dio: ^4.0.6
+  # dio_cookie_manager: ^2.0.0
+  # cookie_jar: ^3.0.1
+
   # https://github.com/ReactiveX/rxdart
   # rxdart: ^0.27.5
   # Dart 常用工具类库 https://github.com/Sky24n/common_utils
@@ -57,7 +67,7 @@ dependencies:
   # 处理键盘事件 https://github.com/diegoveloper/flutter_keyboard_actions
   # keyboard_actions: ^4.0.1
   # 列表悬浮头 https://github.com/fluttercommunity/flutter_sticky_headers
-  sticky_headers: ^0.3.0+2
+  # sticky_headers: ^0.3.0+2
   # 城市选择列表 https://github.com/flutterchina/azlistview
   # azlistview: ^2.0.0
   # 路由框架 https://github.com/theyakka/fluro
@@ -77,6 +87,19 @@ dependencies:
   # App Shortcuts Phone Home Screen 快捷方式 https://github.com/flutter/plugins/tree/master/packages/quick_actions
   quick_actions: 1.0.0
 
+  # 错误收集
+  # sentry: ^5.0.0
+
+  # 通过 scheme 打开APP 获取 参数
+  uni_links: ^0.5.1
+  # svg
+  flutter_svg: ^1.1.6
+  # badge
+  # badges: ^2.0.3
+
+  # json
+  json_annotation: ^4.7.0
+
 
 dev_dependencies:
   flutter_test:
@@ -88,6 +111,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+  # json 
+  json_serializable: ^6.5.4
+  build_runner: ^2.3.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -102,6 +129,12 @@ flutter:
 
   assets:
     - assets/images/
+    # - assets/images/svg
+
+  fonts:
+    - family: Source_Han_Serif_CN_VF_Regular
+      fonts:
+        - asset: assets/fonts/Source_Han_Serif_CN_VF_Regular.ttf
   
   # To add assets to your application, add an assets section, like this:
   # assets:

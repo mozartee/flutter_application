@@ -1,36 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/main.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="ChangeListManager">
+    <list default="true" id="ebba0de2-df72-4a90-8249-0bdd1dd81bb7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/ost_digital_application_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/ost_digital_application_android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/class/home/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/class/home/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/class/home/home_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/class/home/home_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/class/login/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/class/login/login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/class/login/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/class/login/signup.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/class/mine/mine.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/class/mine/mine.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/class/splash/splash.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/class/splash/splash.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/assets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/assets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/constant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/quick_actions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/quick_actions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/shared_preference.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/shared_preference.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/text_style.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/text_style.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/service/http_api.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ost_digital_application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ost_digital_application.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ToolWindowManager">
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-    </layout>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <option name="show-excluded-files" value="false" />
-      </pane>
-    </panes>
+  <component name="ProjectId" id="2ItRadWU4EVslj3jiqdKe0GjRlR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ebba0de2-df72-4a90-8249-0bdd1dd81bb7" name="Default Changelist" comment="" />
+      <created>1670998957702</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670998957702</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="868" y="437" key="IDE.errors.dialog" timestamp="1670999691907">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state x="868" y="437" key="IDE.errors.dialog/0.25.2560.1330@0.25.2560.1330" timestamp="1670999691907" />
+    <state x="781" y="326" key="SettingsEditor" timestamp="1670999848369">
+      <screen x="0" y="25" width="2560" height="1330" />
+    </state>
+    <state x="781" y="326" key="SettingsEditor/0.25.2560.1330@0.25.2560.1330" timestamp="1670999848369" />
   </component>
 </project>

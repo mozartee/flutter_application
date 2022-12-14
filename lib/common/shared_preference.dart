@@ -1,15 +1,21 @@
 import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
 
-///
-/// SpUtil 用法： https://github.com/Sky24n/flustars
-///
-
-class SharedKey {
-  /// 闪图
+class PageKey {
+  // 闪图
   static const splash = "splash_key";
-
-  /// 登录
+  // 登录
   static const login = 'login_key';
+}
+
+class TokenKey {
+  static const accessToken = 'accessToken';
+  static const refreshToken = 'refreshToken';
+}
+
+class ResponseKey {
+  static const data = 'data';
+  static const message = 'message';
+  static const code = 'code';
 }
 
 class AppThemeKey {
@@ -24,8 +30,8 @@ class AppLanguageKey {
 
 class Share {
   /// 第一次使用
-  static bool? notFirstDisplay() => SpUtil.getBool(SharedKey.splash);
+  static bool? notFirstDisplay() => SpUtil.getBool(PageKey.splash);
 
   /// 当前是否登录
-  static bool? login() => SpUtil.getBool(SharedKey.login);
+  static bool? login() => SpUtil.getBool(PageKey.login);
 }

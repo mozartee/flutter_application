@@ -6,6 +6,7 @@ const Map<String, String> zh_CN = {
   Languages.chinese: '中文',
   Languages.english: '英语',
   Languages.splashbutton: '直接进入',
+  Languages.loadingDefaultStatus: '加载中',
   Languages.tabbarhome: '首页',
   Languages.tabbarmine: '我的',
   Languages.signin: '登 录',

@@ -4,6 +4,8 @@ class Languages {
 
   static const String splashbutton = 'splashbutton';
 
+  static const String loadingDefaultStatus = 'loadingDefaultStatus';
+
   static const String tabbarhome = 'tabbarhome';
   static const String tabbarmine = 'tabbarmine';
 

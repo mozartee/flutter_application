@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
+import 'package:get/get.dart';
+import 'package:ost_digital_application/widget/loading.dart';
 
-import '/common/constant.dart';
-import '/common/handle_error.dart';
-import '/common/lang/translation.dart';
-import '/common/log.dart';
-import '/common/quick_actions.dart';
-import '/common/routes/header.dart';
-import '/common/shared_preference.dart';
+import 'common/constant.dart';
+import 'common/handle_error.dart';
+import 'common/lang/translation.dart';
+import 'common/log.dart';
+import 'common/quick_actions.dart';
+import 'common/shared_preference.dart';
 import 'common/device.dart';
 import 'common/theme/header.dart';
+import 'common/routes/header.dart';
 
 Future<void> main() async {
   // 确保初始化完成
@@ -33,8 +35,8 @@ class MyApp extends StatelessWidget {
   MyApp({super.key}) {
     Log.init();
     initDio();
+    Loading();
     initQuickActions();
-    initLanguage();
   }
 
   void initDio() {
@@ -47,12 +49,6 @@ class MyApp extends StatelessWidget {
         : Share.login() == false
             ? Routes.login
             : Routes.tabbar;
-  }
-
-  void initLanguage() {
-    // SpUtil.putString(AppLanguageKey.language, Languages.chinese);
-    // set splash for test.
-    // SpUtil.putBool(SharedKey.splash, false);
   }
 
   // This widget is the root of your application.
@@ -76,6 +72,7 @@ class MyApp extends StatelessWidget {
           translations: LanguageTranslations(),
           locale: LanguageTranslations.locale,
           fallbackLocale: LanguageTranslations.fallbackLocale,
+          builder: EasyLoading.init(),
         );
       },
     );

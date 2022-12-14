@@ -4,7 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '/common/constant.dart';
+import '../../common/gap.dart';
+import '../../widget/loading.dart';
 import '/common/routes/header.dart';
 import '../../common/lang/keys.dart';
 
@@ -51,11 +52,16 @@ class Login extends StatelessWidget {
                       borderRadius: BorderRadius.circular(24.h),
                       child: TextButton(
                         onPressed: () {
-                          if (appStart == true) {
-                            Get.offNamed(Routes.tabbar);
-                          } else {
-                            Get.toNamed(Routes.tabbar);
-                          }
+                          Loading.show();
+                          Future.delayed(const Duration(milliseconds: 2000))
+                              .then((value) {
+                                Loading.dismiss();
+                            if (appStart == true) {
+                              Get.offNamed(Routes.tabbar);
+                            } else {
+                              Get.toNamed(Routes.tabbar);
+                            }
+                          });
                         },
                         child: Text(Languages.signin.tr),
                       ),

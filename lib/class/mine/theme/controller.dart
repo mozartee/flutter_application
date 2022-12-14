@@ -2,6 +2,7 @@ import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ost_digital_application/widget/loading.dart';
 
 import '/common/shared_preference.dart';
 import '/common/theme/header.dart';
@@ -27,6 +28,8 @@ class ThemeChangeController extends GetxController {
     }
     if (themeData != null) {
       Get.changeTheme(themeData);
+      // reset loading
+      Loading();
     }
 
     Future.delayed(const Duration(microseconds: 500)).then((value) {

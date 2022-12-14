@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/routes/header.dart';
 
+import '../../common/assets.dart';
 import '../../common/lang/header.dart';
 
 class Mine extends StatelessWidget {
@@ -21,7 +22,14 @@ class Mine extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(),
+      body: Center(
+        child: Assets.loadImage(
+          '03',
+          format: ImageFormat.svg,
+          width: 300,
+          height: 300,
+        ),
+      ),
     );
   }
 }
