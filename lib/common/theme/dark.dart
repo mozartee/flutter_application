@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../color.dart';
-import '../text_style.dart';
+import '../help/index.dart';
 
 class ThemeDataDark {
   static ThemeData get theme => ThemeData.dark().copyWith(

@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
 import 'package:get/get.dart';
-import 'package:ost_digital_application/widget/loading.dart';
 
-import 'common/constant.dart';
-import 'common/handle_error.dart';
-import 'common/lang/translation.dart';
-import 'common/log.dart';
-import 'common/quick_actions.dart';
-import 'common/shared_preference.dart';
-import 'common/device.dart';
-import 'common/theme/header.dart';
-import 'common/routes/header.dart';
+import 'common/help/index.dart';
+import 'common/langs/index.dart';
+import 'common/routes/index.dart';
+import 'common/theme/index.dart';
+import 'common/utils/index.dart';
+import 'common/widget/index.dart';
 
 Future<void> main() async {
   // 确保初始化完成
@@ -33,22 +29,14 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key}) {
-    Log.init();
-    initDio();
-    Loading();
-    initQuickActions();
+    // Log.init();
+    // initDio();
+    // Loading();
+    // initQuickActions();
   }
 
   void initDio() {
     if (!Constant.isRelease) {}
-  }
-
-  String? initialRoute() {
-    return Share.notFirstDisplay() == false
-        ? Routes.splash
-        : Share.login() == false
-            ? Routes.login
-            : Routes.tabbar;
   }
 
   // This widget is the root of your application.
@@ -58,15 +46,16 @@ class MyApp extends StatelessWidget {
       designSize: designSize,
       builder: (context, child) {
         return GetMaterialApp(
-          title: 'Flutter',
+          onInit: () {
+            Log.init();
+            initDio();
+            Loading();
+            initQuickActions();
+          },
           debugShowCheckedModeBanner: false,
-          // checkerboardOffscreenLayers: true, // 检查离屏渲染
-          // showSemanticsDebugger: true, // 显示语义视图(残障人士)
-          // showPerformanceOverlay: true, // 显示性能标签
-
-          initialRoute: initialRoute(),
+          initialRoute: Routes.splash,
           getPages: getPages(),
-          themeMode: currentThemeMode(), //ThemeDataMode.current,
+          themeMode: currentThemeMode(),
           theme: ThemeData().light,
           darkTheme: ThemeData().dark,
           translations: LanguageTranslations(),

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../color.dart';
-import '../text_style.dart';
+import '../help/index.dart';
 
 class ThemeDataLight {
   static ThemeData get theme => ThemeData.light().copyWith(
@@ -12,6 +11,8 @@ class ThemeDataLight {
           brightness: Brightness.light,
           secondary: OSTColors.primary,
         ),
+
+        backgroundColor: const Color(0xFFEDF0F2),
 
         // 去除水波纹
         splashFactory: NoSplash.splashFactory,
@@ -22,7 +23,7 @@ class ThemeDataLight {
         appBarTheme: AppBarTheme(
           elevation: 0.0,
           foregroundColor: OSTColors.navForeground,
-          backgroundColor: OSTColors.navBackground,
+          backgroundColor: const Color(0xFFEDF0F2), // OSTColors.navBackground,
           titleTextStyle: OSTTextStyle.navTitle,
           actionsIconTheme: const IconThemeData(color: OSTColors.navForeground),
           systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -50,7 +51,8 @@ class ThemeDataLight {
         ),
         errorColor: OSTColors.error,
         indicatorColor: OSTColors.primary,
-        scaffoldBackgroundColor: OSTColors.background,
+        scaffoldBackgroundColor:
+            const Color(0xFFEDF0F2), // OSTColors.background,
         dividerTheme: const DividerThemeData(
           color: OSTColors.divider,
         ),

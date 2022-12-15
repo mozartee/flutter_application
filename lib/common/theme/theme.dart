@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flustars_flutter3/flustars_flutter3.dart';
 
-import '/common/shared_preference.dart';
-import 'header.dart';
+import '../help/index.dart';
+import 'index.dart';
 
 extension ThemeModeExtension on ThemeMode {
   String get value => <String>['System', 'Light', 'Dark'][index];

@@ -6,7 +6,7 @@ class Routes {
   static const tabbar = '/tabbar';
 
   /// 登录
-  static const login = '/login';
+  static const signin = '/signin';
 
   /// 注册
   static const signup = '/signup';
