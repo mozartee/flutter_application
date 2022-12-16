@@ -21,6 +21,7 @@ class OSTListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: text != null ? Text(text!) : title,
+      leading: leading,
       trailing: trailing,
       onTap: onTap,
     );

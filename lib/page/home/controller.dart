@@ -9,7 +9,7 @@ class HomeController extends GetxController with StateMixin<String> {
 
   void testForChange() async {
     change(null, status: RxStatus.loading());
-    Future.delayed(const Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 2)).then((value) {
       change('error', status: RxStatus.error('error'));
     });
   }

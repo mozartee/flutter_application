@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ost_digital_application/common/utils/index.dart';
 
 import '../../common/widget/alert.dart';
 import '../../common/widget/textfield.dart';
@@ -99,12 +100,12 @@ class SignUp extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 20.h),
+                    margin: EdgeInsets.only(top: 20.h),
                     width: double.infinity,
-                    height: 60.h,
+                    height: Constant.buttonHeight,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(24.h),
-                      child: TextButton(
+                      child: ElevatedButton(
                           onPressed: () {
                             // verify(context);
                             FocusScope.of(context).unfocus();

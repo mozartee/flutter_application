@@ -1,3 +1,3 @@
 library mine;
 
-export './mine.dart';
+export 'mine.dart';

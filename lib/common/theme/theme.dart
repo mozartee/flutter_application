@@ -28,4 +28,5 @@ class ThemeDataMode {
 extension ThemeDataExtension on ThemeData {
   ThemeData get light => ThemeDataLight.theme;
   ThemeData get dark => ThemeDataDark.theme;
+  ThemeData get system => ThemeDataSysytem.theme;
 }

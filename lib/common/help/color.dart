@@ -7,7 +7,7 @@ class OSTColors {
   static const Color primary = Color(0xff00C094);
   static const Color primaryDark = Color.fromARGB(255, 0, 165, 126);
 
-  static const Color navBackground = Colors.white;
+  static const Color navBackground = Color(0xFFEDF0F2); // Colors.white;
   static const Color navBackgroundDark = Color(0xff303030);
 
   static const Color navForeground = Colors.black;

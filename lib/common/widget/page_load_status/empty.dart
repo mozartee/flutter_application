@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:ost_digital_application/common/utils/gap.dart';
 
-import '../help/index.dart';
+import 'package:get/get.dart';
 
-class ErrorPage extends StatelessWidget {
-  const ErrorPage({
+import '../../help/index.dart';
+import '../../langs/index.dart';
+import '../../utils/index.dart';
+
+class EmptyPage extends StatelessWidget {
+  const EmptyPage({
     super.key,
     this.showErrorImage = true,
     this.showText = true,
     this.showButton = true,
     this.errorImagePath,
-    this.text = '出错了',
-    this.buttonText = '重试',
+    this.text,
+    this.buttonText,
     this.errorImage,
     this.onPressed,
   });
@@ -48,17 +51,18 @@ class ErrorPage extends StatelessWidget {
       showErrorImage == true ? errorImage ?? _loadImage : Container();
 
   Widget get _loadImage => Assets.loadImage(
-        errorImagePath ?? 'error',
+        errorImagePath ?? 'empty',
         format: ImageFormat.svg,
         width: 300,
         height: 300,
       );
-  Widget get _text => showText == true ? Text(text!) : Container();
+  Widget get _text =>
+      showText == true ? Text(text ?? Languages.loadingEmpty.tr) : Container();
 
   Widget get _button => showButton == true
       ? TextButton(
           onPressed: onPressed,
-          child: Text(buttonText!),
+          child: Text(buttonText ?? Languages.loadingRetry.tr),
         )
       : Container();
 }

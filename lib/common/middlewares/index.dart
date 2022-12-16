@@ -1,4 +1,4 @@
 library middlewares;
 
-export './auth_middleware.dart';
-export './welcome_middleware.dart';
+export 'auth_middleware.dart';
+export 'welcome_middleware.dart';

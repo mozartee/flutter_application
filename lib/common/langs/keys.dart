@@ -5,6 +5,9 @@ class Languages {
   static const String splashbutton = 'splashbutton';
 
   static const String loadingDefaultStatus = 'loadingDefaultStatus';
+  static const String loadingEmpty = 'loadingEmpty';
+  static const String loadingError = 'loadingError';
+  static const String loadingRetry = 'loadingRetry';
 
   static const String tabbarhome = 'tabbarhome';
   static const String tabbarmine = 'tabbarmine';

@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../common/utils/index.dart';
 import '../../common/langs/index.dart';
@@ -19,6 +20,7 @@ class Signin extends GetView<SigninController> {
         init: SigninController(),
         builder: (_) {
           return SingleChildScrollView(
+            physics: const ClampingScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -39,21 +41,23 @@ class Signin extends GetView<SigninController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Gap.whc(
-            h: Constant.buttonHeight,
-            child: OSTTextField(
-              hintText: Languages.accounthint.tr,
-              textInputAction: TextInputAction.done,
-            ),
+          OSTTextField(
+            hintText: Languages.accounthint.tr,
+            textInputAction: TextInputAction.done,
           ),
           Gap.h.dp10,
-          Gap.whc(
-            h: Constant.buttonHeight,
+          SizedBox(
+            width: double.infinity,
+            height: Constant.buttonHeight,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(24.h),
-              child: TextButton(
+              // borderRadius: BorderRadius.circular(24.h),
+              child: ElevatedButton(
                 onPressed: () => controller.tapSignin(context),
-                child: Text(Languages.signin.tr),
+                child: Shimmer.fromColors(
+                  baseColor: Colors.white,
+                  highlightColor: Colors.orange,
+                  child: Text(Languages.signin.tr),
+                ),
               ),
             ),
           ),
@@ -80,7 +84,7 @@ class Signin extends GetView<SigninController> {
 
   Container _buildText() {
     return Container(
-      margin: EdgeInsets.fromLTRB(15.w, 30.h, 15.w, 20.h),
+      margin: EdgeInsets.fromLTRB(15.w, 20.h, 15.w, 20.h),
       width: double.infinity,
       alignment: AlignmentDirectional.center,
       child: Text(

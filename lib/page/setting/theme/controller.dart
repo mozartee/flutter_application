@@ -11,20 +11,37 @@ class ThemeChangeController extends GetxController {
   ThemeChangeController();
 
   void changeTheme({int index = 0}) {
-    if (index == 0) {
-      if (Get.isDarkMode == true) {
-        _change(themeMode: ThemeMode.light, themeData: ThemeData().light);
-      }
-    } else if (index == 1) {
-      if (Get.isDarkMode == false) {
-        _change(themeMode: ThemeMode.dark, themeData: ThemeData().dark);
-      }
+    switch (index) {
+      case 0:
+        {
+          if (currentThemeMode() != ThemeMode.system) {
+            _change(themeMode: ThemeMode.system, themeData: ThemeData().system);
+          }
+        }
+        break;
+      case 1:
+        {
+          if (currentThemeMode() != ThemeMode.light) {
+            _change(themeMode: ThemeMode.light, themeData: ThemeData().light);
+          }
+        }
+        break;
+      case 2:
+        {
+          if (currentThemeMode() != ThemeMode.dark) {
+            _change(themeMode: ThemeMode.dark, themeData: ThemeData().dark);
+          }
+        }
+
+        break;
+      default:
     }
   }
 
   void _change({ThemeMode? themeMode, ThemeData? themeData}) {
     if (themeMode != null) {
       SpUtil.putString(AppThemeKey.theme, themeMode.value);
+      Get.changeThemeMode(themeMode);
     }
     if (themeData != null) {
       Get.changeTheme(themeData);

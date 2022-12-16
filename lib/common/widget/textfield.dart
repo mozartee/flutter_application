@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ost_digital_application/common/utils/index.dart';
 
 import '../help/index.dart';
 
@@ -55,24 +56,20 @@ class OSTTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      // 填充最高 80
-      constraints: BoxConstraints(maxHeight: 80.h),
-      child: TextField(
-        decoration: _inputDecoration(),
-        controller: controller,
-        focusNode: focusNode,
-        autofocus: autoFocus,
-        obscureText: obscureText,
-        textInputAction: textInputAction,
-        maxLines: maxLines ?? (obscureText ? 1 : null),
-        maxLength: maxLength,
-        onTap: onTap,
-        onChanged: onChanged,
-        onEditingComplete: onEditingComplete,
-        onSubmitted: onSubmitted,
-        inputFormatters: inputFormatters,
-      ),
+    return TextField(
+      decoration: _inputDecoration(),
+      controller: controller,
+      focusNode: focusNode,
+      autofocus: autoFocus,
+      obscureText: obscureText,
+      textInputAction: textInputAction,
+      maxLines: maxLines ?? (obscureText ? 1 : null),
+      maxLength: maxLength,
+      onTap: onTap,
+      onChanged: onChanged,
+      onEditingComplete: onEditingComplete,
+      onSubmitted: onSubmitted,
+      inputFormatters: inputFormatters,
     );
   }
 

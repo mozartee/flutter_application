@@ -4,18 +4,23 @@ import 'package:get/get.dart';
 import '../../../common/langs/keys.dart';
 import '../../common/routes/key.dart';
 import 'index.dart';
-import 'widgets/widgets.dart';
 
-class HomePage extends GetView<HomeController> {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
-  // 主视图
-  Widget _buildView() {
-    return const HelloWidget();
-  }
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return GetBuilder<HomeController>(
       init: HomeController(),
       builder: (_) {
@@ -34,8 +39,8 @@ class HomePage extends GetView<HomeController> {
               ),
             ],
           ),
-          body: SafeArea(
-            child: _buildView(),
+          body: const SafeArea(
+            child: HomePageBody(),
           ),
         );
       },
