@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ost_digital_application/page/home/widgets/success_page.dart';
 
 import '../../../../common/extension/string_extension.dart';
 import '../../../common/help/assets.dart';
@@ -32,19 +33,20 @@ class HomePageBody extends GetView<HomeController> {
       );
 
   _successWidget(String? text) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(text.nullSafe),
-          Assets.loadImage(
-            '01',
-            format: ImageFormat.svg,
-            width: 300,
-            height: 300,
-          )
-        ],
-      ),
-    );
+    return ListPage();
+    // return Center(
+    //   child: Column(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: [
+    //       Text(text.nullSafe),
+    //       Assets.loadImage(
+    //         '01',
+    //         format: ImageFormat.svg,
+    //         width: 300,
+    //         height: 300,
+    //       )
+    //     ],
+    //   ),
+    // );
   }
 }

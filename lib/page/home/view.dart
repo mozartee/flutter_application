@@ -39,9 +39,7 @@ class _HomePageState extends State<HomePage>
               ),
             ],
           ),
-          body: const SafeArea(
-            child: HomePageBody(),
-          ),
+          body: HomePageBody(),
         );
       },
     );

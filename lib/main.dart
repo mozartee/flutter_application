@@ -11,13 +11,16 @@ import 'common/routes/index.dart';
 import 'common/theme/index.dart';
 import 'common/utils/index.dart';
 import 'common/widget/index.dart';
+import 'global.dart';
 
 Future<void> main() async {
-  // 确保初始化完成
-  WidgetsFlutterBinding.ensureInitialized();
+  // // 确保初始化完成
+  // WidgetsFlutterBinding.ensureInitialized();
 
-  // sharedPreferences
-  await SpUtil.getInstance();
+  // // sharedPreferences
+  // await SpUtil.getInstance();
+  
+  await Global.init();
 
   // 异常处理
   handleError(() => runApp(MyApp()));
