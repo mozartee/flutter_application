@@ -3,11 +3,9 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flustars_flutter3/flustars_flutter3.dart';
 
-import '../../help/log.dart';
-import '../../help/shared_preference.dart';
-import '../../../common/extension/string_extension.dart';
-import '../error.dart';
-import '../http_help.dart';
+import '../../../common/extension/index.dart';
+import '../../help/index.dart';
+import '../index.dart';
 
 /// refresh token
 class TokenInterceptor extends Interceptor {
@@ -18,7 +16,7 @@ class TokenInterceptor extends Interceptor {
     params['refresh_token'] = SpUtil.getString(TokenKey.refreshToken).nullSafe;
     try {
       _tokenDio ??= Dio();
-      _tokenDio!.options = HttpUtil().dio.options;
+      _tokenDio!.options = HttpUtil.dio.options;
       final Response<dynamic> response =
           await _tokenDio!.post<dynamic>('login/refresh', data: params);
       if (response.statusCode == HttpError.success) {

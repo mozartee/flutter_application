@@ -19,7 +19,8 @@ class HttpUtil {
   static final HttpUtil _instance = HttpUtil._();
   factory HttpUtil() => _instance;
 
-  late Dio dio;
+  static late Dio _dio;
+  static Dio get dio => _dio;
 
   HttpUtil._() {
     // BaseOptions、Options、RequestOptions 都可以配置参数，优先级别依次递增，且可以根据优先级别覆盖参数
@@ -41,13 +42,11 @@ class HttpUtil {
       responseType: ResponseType.json,
     );
 
-    dio = Dio(options);
+    _dio = Dio(options);
 
     // 拦截器
-    dio.interceptors.addAll(interceptors);
+    _dio.interceptors.addAll(interceptors);
   }
-
-  // Future<BaseEntity<T>> request<T>(){}
 
   Future<BaseEntity<T>> _request<T>(
     String method,
@@ -57,7 +56,7 @@ class HttpUtil {
     CancelToken? cancelToken,
     Options? options,
   }) async {
-    final Response<String> response = await dio.request<String>(
+    final Response<String> response = await _dio.request<String>(
       url,
       data: data,
       queryParameters: quertParameters,
