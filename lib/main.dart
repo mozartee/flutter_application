@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
 import 'package:get/get.dart';
 
 import 'common/help/index.dart';
@@ -10,7 +8,6 @@ import 'common/langs/index.dart';
 import 'common/routes/index.dart';
 import 'common/theme/index.dart';
 import 'common/utils/index.dart';
-import 'common/widget/index.dart';
 import 'global.dart';
 
 Future<void> main() async {
@@ -49,12 +46,12 @@ class MyApp extends StatelessWidget {
       designSize: designSize,
       builder: (context, child) {
         return GetMaterialApp(
-          onInit: () {
-            Log.init();
-            initDio();
-            Loading();
-            initQuickActions();
-          },
+          // onInit: () {
+          //   Log.init();
+          //   initDio();
+          //   Loading();
+          //   initQuickActions();
+          // },
           debugShowCheckedModeBanner: false,
           initialRoute: Routes.splash,
           getPages: getPages(),

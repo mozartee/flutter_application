@@ -1,8 +1,9 @@
-import 'package:get/get.dart';
+import 'package:easy_refresh/easy_refresh.dart';
+
+import '../../common/entity/index.dart';
 
 class HomeState {
-  // title
-  final _title = "".obs;
-  set title(value) => _title.value = value;
-  get title => _title.value;
+  late EasyRefreshController refreshController;
+  late int itemCount;
+  late List<CommentEntity> comments;
 }

@@ -26,6 +26,26 @@ class _HomePageState extends State<HomePage>
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
+            leading: IconButton(
+              icon: const Icon(Icons.local_laundry_service_outlined),
+              onPressed: () {
+                Get.snackbar(
+                  "Youtube",
+                  "This's a snack bar with show somthing you want to know",
+                  // backgroundGradient:
+                  //     const LinearGradient(colors: [Colors.blue, Colors.green]),
+                  backgroundColor: Colors.white,
+                  boxShadows: [
+                    const BoxShadow(color: Color(0xFFEEEEEE), blurRadius: 15)
+                  ],
+                  // barBlur: 0,
+                  animationDuration: const Duration(milliseconds: 350),
+                  forwardAnimationCurve: Curves.easeInOut,
+                  reverseAnimationCurve: Curves.easeInOut,
+                  onTap: (_) {},
+                );
+              },
+            ),
             title: Text(Languages.home.tr),
             actions: [
               IconButton(
@@ -39,7 +59,7 @@ class _HomePageState extends State<HomePage>
               ),
             ],
           ),
-          body: HomePageBody(),
+          body: const HomePageBody(),
         );
       },
     );

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/page/home/widgets/success_page.dart';
 
-import '../../../../common/extension/string_extension.dart';
-import '../../../common/help/assets.dart';
 import '../../../common/widget/load.dart';
 import '../../../common/widget/page_load_status/empty.dart';
 import '../../../common/widget/page_load_status/error.dart';
@@ -24,6 +22,8 @@ class HomePageBody extends GetView<HomeController> {
 
   _loadWidget() => const LoadPage();
 
+  _successWidget(String? text) => const ListPage();
+
   _errorWidget() => ErrorPage(
         onPressed: () => controller.updateState(),
       );
@@ -31,22 +31,4 @@ class HomePageBody extends GetView<HomeController> {
   _emptyWidget() => EmptyPage(
         onPressed: () => controller.updateState(),
       );
-
-  _successWidget(String? text) {
-    return ListPage();
-    // return Center(
-    //   child: Column(
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     children: [
-    //       Text(text.nullSafe),
-    //       Assets.loadImage(
-    //         '01',
-    //         format: ImageFormat.svg,
-    //         width: 300,
-    //         height: 300,
-    //       )
-    //     ],
-    //   ),
-    // );
-  }
 }

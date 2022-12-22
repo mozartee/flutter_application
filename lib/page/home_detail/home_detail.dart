@@ -1,60 +1,209 @@
-import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_refresh/easy_refresh.dart';
+import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../common/help/assets.dart';
 
-class HomeDetail extends StatelessWidget {
+class HomeDetail extends StatefulWidget {
   const HomeDetail({Key? key}) : super(key: key);
 
   @override
+  State<HomeDetail> createState() => _HomeDetailState();
+}
+
+class _HomeDetailState extends State<HomeDetail>
+    with SingleTickerProviderStateMixin {
+  int _listCount = 10;
+  int _gridCount = 10;
+
+  @override
   Widget build(BuildContext context) {
+    final themeData = Theme.of(context);
+
     return Scaffold(
       body: ExtendedNestedScrollView(
-        // pinnedHeaderSliverHeightBuilder: () => 120,
+        onlyOneScrollInBody: true,
+        pinnedHeaderSliverHeightBuilder: () {
+          return MediaQuery.of(context).padding.top; //kToolbarHeight;
+        },
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              pinned: true,
-              floating: true,
-              snap: false,
-              centerTitle: false,
-              // title: Text('App Bar'),
               expandedHeight: 150,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text('App Bar'),
-                background: Assets.loadImage('subtract',),
+                title: Text(
+                  'NextedScrollView',
+                  style:
+                      TextStyle(color: themeData.textTheme.titleLarge?.color),
+                ),
+                // centerTitle: false,
+                background: Assets.loadImage(
+                  'subtract',
+                ),
               ),
             )
           ];
         },
-        body: ListView(
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
-                'A Watch Dog is watching you,Stay At Home!',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+        body: DefaultTabController(
+          length: 2,
+          child: Column(
+            children: [
+              TabBar(
+                labelColor: themeData.colorScheme.primary,
+                indicatorColor: themeData.colorScheme.primary,
+                tabs: const [
+                  Tab(text: 'List'),
+                  Tab(text: 'Grid'),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    _listTab(),
+                    _gridTab(themeData),
+                  ],
                 ),
               ),
-            ),
-            Assets.loadImage('02', height: 400, format: ImageFormat.svg),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-              child: Text(
-                '''1、没加Scaffold，这个其实并不常见(自相矛盾草)，不过可以检查一下，一般总是会有Scaffold的
-      2、真正常见的：指定了controller，如果自己创建了一个Controller丢给ScrollView，那必然是会失效的。但是使用controller又是一个很常见且重要的需求，怎么办呢？也很简单，就是不要自己创建新的ScrollController，而是直接取PrimaryScrollController.of(context)这个controller，对其进行自己要做的操作。
-      3、相对不太常见且需要分析具体代码的：多个Scaffold导致的冲突。
-      注意到其实flutter里的这个点击状态栏并不是真的点击了状态栏，而是点击了“Scaffold提供的位于状态栏的可点击区域”，也就是说，如果有多个Scaffold就会有多个这样的区域。实际情况是，只有最内部的Scaffold的状态栏会有响应，而如果ScrollView所处位置取到的和点击的Scaffold不一致，自然也就不会有滚动到顶部的feature
-      ''',
-                style: TextStyle(
-                  fontSize: 14,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+  final List<String> _gridList = [
+    'Animal',
+    'Git your git',
+    'a child is playing',
+    'living the life,and you will find the live'
+  ];
+
+  ExtendedVisibilityDetector _gridTab(ThemeData themeData) {
+    return ExtendedVisibilityDetector(
+      uniqueKey: const Key('gridTab'),
+      child: EasyRefresh(
+        child: Container(
+          color: Colors.red,
+          child: CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 10),
+                sliver: SliverToBoxAdapter(
+                  child: Container(
+                    color: Colors.green,
+                    child: AnimationLimiter(
+                      child: MasonryGridView.count(
+                        crossAxisCount: 4,
+                        crossAxisSpacing: 4,
+                        mainAxisSpacing: 4,
+                        itemCount: _gridCount,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return AnimationConfiguration.staggeredGrid(
+                            position: index,
+                            columnCount: 4,
+                            child: SlideAnimation(
+                              child: Container(
+                                color: Colors.blue,
+                                child: Center(
+                                    child:
+                                        Text('${_gridList[index % 4]} at $index')),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // SliverPadding(
+              //   padding: const EdgeInsets.all(10.0),
+              //   sliver:
+              //    SliverGrid(
+              //     delegate: SliverChildBuilderDelegate(
+              //       (context, index) {return Container(
+              //         decoration: BoxDecoration(
+              //           color: themeData.colorScheme.primary,
+              //           borderRadius: BorderRadius.circular(8),
+              //         ),
+              //         child: ListTile(
+              //           title: Text('Grid View at Row $index'),
+              //         ),
+              //       );},
+              //       childCount: _gridCount,
+              //     ),
+              //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              //       mainAxisSpacing: 10,
+              //       crossAxisSpacing: 10,
+              //       crossAxisCount: 2,
+              //       childAspectRatio: 3 / 4,
+              //     ),
+              //   ),
+              // )
+            ],
+          ),
+        ),
+        onRefresh: () {
+          if (!mounted) return;
+          _gridCount = 10;
+          setState(() {});
+        },
+        onLoad: () {
+          if (!mounted) return;
+          _gridCount += 10;
+          setState(() {});
+        },
+      ),
+    );
+  }
+
+  ExtendedVisibilityDetector _listTab() {
+    return ExtendedVisibilityDetector(
+      uniqueKey: const Key('listTab'),
+      child: EasyRefresh(
+        footer: const ClassicFooter(position: IndicatorPosition.locator),
+        child: AnimationLimiter(
+          child: CustomScrollView(
+            slivers: [
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      child: SlideAnimation(
+                        child: Card(
+                          elevation: 0,
+                          margin: const EdgeInsets.only(
+                              top: 8, left: 10, right: 10),
+                          child: ListTile(
+                            title: Text('A Hero Like Messi at Row $index'),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  childCount: _listCount,
+                ),
+              ),
+              const FooterLocator.sliver(),
+            ],
+          ),
+        ),
+        onRefresh: () {
+          if (!mounted) return;
+          _listCount = 10;
+          setState(() {});
+        },
+        onLoad: () {
+          if (!mounted) return;
+          _listCount += 10;
+          setState(() {});
+        },
       ),
     );
   }

@@ -1,13 +1,14 @@
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:get/get.dart';
+import 'package:ost_digital_application/common/entity/comment.dart';
+import 'package:ost_digital_application/common/service/index.dart';
+
+import 'state.dart';
 
 class HomeController extends GetxController with StateMixin<String> {
   HomeController();
 
-  // final state = HomeState();
-
-  late EasyRefreshController refreshController;
-  late int itemCount;
+  final homeState = HomeState();
 
   // Getx RxStatus
   void testForChange() async {
@@ -17,27 +18,47 @@ class HomeController extends GetxController with StateMixin<String> {
     });
   }
 
-  void updateState() {
+  void updateState() async {
     change(null, status: RxStatus.loading());
-    Future.delayed(const Duration(seconds: 2)).then((value) {
-      change('Success loding!', status: RxStatus.success());
-    });
+
+    homeState.comments = await _request();
+    // await _formData();
+    change('Success loding!', status: RxStatus.success());
+  }
+
+  Future _formData() async {
+    await HttpUtil().postForm(
+      'https://t.duodian.api.cheng1hu.com/v1/index/recommendDoctor',
+      data: {
+        "channel": "ios",
+        "version": '1.0.0',
+        'sign': 'test',
+      },
+    );
+  }
+
+  Future<List<CommentEntity>> _request() async {
+    final response = await HttpUtil().fetch(Api.comments);
+    List list = response;
+    List<CommentEntity> comments =
+        list.map((e) => CommentEntity.fromJson(e)).toList();
+    return comments;
   }
 
   // EasyRefresh
-  Future<void> onRefresh() async {
-    await Future.delayed(const Duration(seconds: 2));
-    itemCount = 10;
-    refreshController.finishRefresh();
-    refreshController.resetFooter();
+  onRefresh() async {
+    homeState.comments = await _request();
+    homeState.refreshController.finishRefresh();
+    homeState.refreshController.resetFooter();
     update();
   }
 
-  Future<void> onLoad() async {
+  onLoad() async {
     await Future.delayed(const Duration(seconds: 2));
-    itemCount += 10;
-    refreshController.finishLoad(
-        itemCount >= 30 ? IndicatorResult.noMore : IndicatorResult.success);
+    homeState.itemCount += 10;
+    homeState.refreshController.finishLoad(homeState.itemCount >= 30
+        ? IndicatorResult.noMore
+        : IndicatorResult.success);
     update();
   }
 
@@ -46,11 +67,11 @@ class HomeController extends GetxController with StateMixin<String> {
   void onInit() {
     super.onInit();
 
-    refreshController = EasyRefreshController(
+    homeState.refreshController = EasyRefreshController(
       controlFinishRefresh: true,
       controlFinishLoad: true,
     );
-    itemCount = 10;
+    homeState.itemCount = 10;
   }
 
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所

@@ -1,7 +1,8 @@
 /// API
 
 class Api {
-  static const baseUrl = '';
+  static const baseUrl = 'https://jsonplaceholder.typicode.com';
+  static const comments = '/comments';
   
   static const users = '';
   static const search = '';

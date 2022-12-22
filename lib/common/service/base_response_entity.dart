@@ -1,16 +1,16 @@
-import 'package:ost_digital_application/common/entity/user.dart';
-import 'package:ost_digital_application/common/help/shared_preference.dart';
+// ignore_for_file: avoid_shadowing_type_parameters
 
+import '../entity/index.dart';
 import '../help/index.dart';
 
-class BaseEntity<T> {
-  BaseEntity(this.code, this.message, this.data);
+class BaseResponseEntity<T> {
+  BaseResponseEntity(this.code, this.message, this.data);
 
   int? code;
   late String? message;
   T? data;
 
-  BaseEntity.fromJson(Map<String, dynamic> json) {
+  BaseResponseEntity.fromJson(Map<String, dynamic> json) {
     code = json[ResponseKey.code] as int?;
     message = json[ResponseKey.message] as String?;
     if (json.containsKey(ResponseKey.data)) {
@@ -45,6 +45,8 @@ class BaseEntity<T> {
     final String type = json.toString();
     if (type == (User).toString()) {
       return User.fromJson(json) as T;
+    } else if (type == (CommentEntity).toString()) {
+      return CommentEntity.fromJson(json) as T;
     }
 
     Log.d('$type is not found');

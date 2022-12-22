@@ -7,8 +7,8 @@ import '../../page/home/index.dart';
 import '../../page/mine/index.dart';
 import 'controller.dart';
 
-class Tabbar extends StatelessWidget {
-  Tabbar({Key? key}) : super(key: key);
+class TabbarPage extends StatelessWidget {
+  TabbarPage({Key? key}) : super(key: key);
 
   final List<Widget> _pages = const [HomePage(), Mine()];
   final List<BottomNavigationBarItem> _items = [

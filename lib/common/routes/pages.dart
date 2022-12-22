@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:get/get.dart';
-import 'package:ost_digital_application/page/setting/bindings.dart';
 
 import '../../page/home/index.dart';
 import '../../page/home_detail/home_detail.dart';
@@ -22,7 +21,7 @@ List<GetPage> getPages() => [
       ),
       GetPage(
         name: Routes.tabbar,
-        page: () => Tabbar(),
+        page: () => TabbarPage(),
         middlewares: [AuthMiddleware(priority: 1)],
       ),
       GetPage(

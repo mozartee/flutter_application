@@ -9,6 +9,22 @@ class Languages {
   static const String loadingError = 'loadingError';
   static const String loadingRetry = 'loadingRetry';
 
+  static const String dragText = 'dragText';
+  static const String armedText = 'armedText';
+  static const String readyText = 'readyText';
+  static const String processingText = 'processingText';
+  static const String processedText = 'processedText';
+  static const String failedText = 'failedText';
+  static const String noMoreText = 'noMoreText';
+
+  static const String dragTextLoad = 'dragTextLoad';
+  static const String armedTextLoad = 'armedTextLoad';
+  static const String readyTextLoad = 'readyTextLoad';
+  static const String processingTextLoad = 'processingTextLoad';
+  static const String processedTextLoad = 'processedTextLoad';
+  static const String failedTextLoad = 'failedTextLoad';
+  static const String noMoreTextLoad = 'noMoreTextLoad';
+
   static const String tabbarhome = 'tabbarhome';
   static const String tabbarmine = 'tabbarmine';
 
