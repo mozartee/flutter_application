@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../common/langs/keys.dart';
 import '../../common/routes/key.dart';
 import 'index.dart';
 
@@ -26,40 +25,51 @@ class _HomePageState extends State<HomePage>
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.local_laundry_service_outlined),
-              onPressed: () {
-                Get.snackbar(
-                  "Youtube",
-                  "This's a snack bar with show somthing you want to know",
-                  // backgroundGradient:
-                  //     const LinearGradient(colors: [Colors.blue, Colors.green]),
-                  backgroundColor: Colors.white,
-                  boxShadows: [
-                    const BoxShadow(color: Color(0xFFEEEEEE), blurRadius: 15)
-                  ],
-                  // barBlur: 0,
-                  animationDuration: const Duration(milliseconds: 350),
-                  forwardAnimationCurve: Curves.easeInOut,
-                  reverseAnimationCurve: Curves.easeInOut,
-                  onTap: (_) {},
-                );
-              },
-            ),
-            title: Text(Languages.home.tr),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Get.toNamed(
-                    Routes.homeDetail,
-                    arguments: {"name": "Jaxo", "years": 19},
-                  );
-                },
-                icon: const Icon(Icons.next_plan),
-              ),
-            ],
+            leading: _loadLeading(),
+            title: Image.network(
+              'https://cdn-uat.500px.me/images/logo-500px.png',
+              width: 72,
+              height: 23,
+            ), //Text(Languages.home.tr),
+            actions: _loadActions,
           ),
           body: const HomePageBody(),
+        );
+      },
+    );
+  }
+
+  List<Widget> get _loadActions {
+    return [
+      IconButton(
+        onPressed: () {
+          Get.toNamed(
+            Routes.homeDetail,
+            arguments: {"name": "Jaxo", "years": 19},
+          );
+        },
+        icon: const Icon(Icons.more_horiz),
+      ),
+    ];
+  }
+
+  IconButton _loadLeading() {
+    return IconButton(
+      icon: const Icon(Icons.local_laundry_service_outlined),
+      onPressed: () {
+        Get.snackbar(
+          "Youtube",
+          "This's a snack bar with show somthing you want to know",
+          // backgroundGradient:
+          //     const LinearGradient(colors: [Colors.blue, Colors.green]),
+          backgroundColor: Colors.white,
+          boxShadows: [
+            const BoxShadow(color: Color(0xFFEEEEEE), blurRadius: 15)
+          ],
+          animationDuration: const Duration(milliseconds: 350),
+          forwardAnimationCurve: Curves.easeInOut,
+          reverseAnimationCurve: Curves.easeInOut,
+          onTap: (_) {},
         );
       },
     );

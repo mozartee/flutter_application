@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyloading/src/widgets/container.dart';
 import 'package:flutter_easyloading/src/widgets/indicator.dart';
+import 'package:get/get.dart';
 
-import '../langs/index.dart';
+import '../../langs/index.dart';
 
 class LoadPage extends StatelessWidget {
   const LoadPage({Key? key, this.status}) : super(key: key);

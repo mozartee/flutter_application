@@ -1,10 +1,17 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:ost_digital_application/common/utils/log.dart';
 
 import '../utils/index.dart';
 import 'index.dart';
+
+/// ----test
+class OSTError {
+  OSTError(this.msg);
+  final String? msg;
+}
 
 List<Interceptor> interceptors = [
   AuthInterceptor(),
@@ -44,6 +51,7 @@ class HttpUtil {
     _dio.interceptors.addAll(interceptors);
   }
 
+/********************* test for api */
   /// 任意请求
   /// 请求成功之后手动匹配 modal
   Future fetch(
@@ -54,21 +62,26 @@ class HttpUtil {
     CancelToken? cancelToken,
     Options? options,
   }) async {
-    final Response response = await _dio.request(url,
-        data: data,
-        queryParameters: quertParameters,
-        cancelToken: cancelToken,
-        options: _options(
-          method.value,
-          options,
-        ));
-
     try {
+      final Response response = await _dio.request(url,
+          data: data,
+          queryParameters: quertParameters,
+          cancelToken: cancelToken,
+          options: _options(
+            method.value,
+            options,
+          ));
       return response.data;
     } catch (e) {
-      return e;
+      log(e.toString());
+      if (e is DioError) {
+        return OSTError(e.message);
+      }
+      return OSTError(e.toString());
     }
   }
+
+  /****************end for api */
 
   /// get请求，封装response
   Future<BaseResponseEntity<T>> get<T>(

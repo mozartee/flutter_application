@@ -3,7 +3,7 @@
 import 'package:get/get.dart';
 
 import '../../page/home/index.dart';
-import '../../page/home_detail/home_detail.dart';
+import '../../page/home_detail/view.dart';
 import '../../page/mine/index.dart';
 import '../../page/setting/index.dart';
 import '../../page/signin/index.dart';

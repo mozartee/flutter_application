@@ -1,9 +1,8 @@
 import 'package:easy_refresh/easy_refresh.dart';
-
-import '../../common/entity/index.dart';
+import 'package:ost_digital_application/common/entity/photo.dart';
 
 class HomeState {
   late EasyRefreshController refreshController;
-  late int itemCount;
-  late List<CommentEntity> comments;
+  late int page;
+  late List<PhotoEntity> photos;
 }

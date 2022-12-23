@@ -4,6 +4,9 @@ import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
+import 'package:ost_digital_application/page/home_detail/controller.dart';
+import 'package:ost_digital_application/page/home_detail/widgets/list_page.dart';
 
 import '../../common/help/assets.dart';
 
@@ -24,52 +27,63 @@ class _HomeDetailState extends State<HomeDetail>
     final themeData = Theme.of(context);
 
     return Scaffold(
-      body: ExtendedNestedScrollView(
-        onlyOneScrollInBody: true,
-        pinnedHeaderSliverHeightBuilder: () {
-          return MediaQuery.of(context).padding.top; //kToolbarHeight;
-        },
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              expandedHeight: 150,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Text(
-                  'NextedScrollView',
-                  style:
-                      TextStyle(color: themeData.textTheme.titleLarge?.color),
-                ),
-                // centerTitle: false,
-                background: Assets.loadImage(
-                  'subtract',
-                ),
-              ),
-            )
-          ];
-        },
-        body: DefaultTabController(
-          length: 2,
-          child: Column(
-            children: [
-              TabBar(
-                labelColor: themeData.colorScheme.primary,
-                indicatorColor: themeData.colorScheme.primary,
-                tabs: const [
-                  Tab(text: 'List'),
-                  Tab(text: 'Grid'),
-                ],
-              ),
-              Expanded(
-                child: TabBarView(
-                  children: [
-                    _listTab(),
-                    _gridTab(themeData),
-                  ],
-                ),
-              ),
-            ],
+      body: _loadBody(context, themeData),
+    );
+  }
+
+  ExtendedNestedScrollView _loadBody(
+      BuildContext context, ThemeData themeData) {
+    return ExtendedNestedScrollView(
+      onlyOneScrollInBody: true,
+      pinnedHeaderSliverHeightBuilder: () => MediaQuery.of(context).padding.top,
+      headerSliverBuilder: (context, innerBoxIsScrolled) =>
+          _loadHeaderSliverBuilder(themeData),
+      body: _loadTabPage(themeData),
+    );
+  }
+
+  List<Widget> _loadHeaderSliverBuilder(ThemeData themeData) {
+    return [
+      SliverAppBar(
+        expandedHeight: 150,
+        flexibleSpace: FlexibleSpaceBar(
+          title: Text(
+            'NextedScrollView',
+            style: TextStyle(color: themeData.textTheme.titleLarge?.color),
+          ),
+          background: Assets.loadImage(
+            'subtract',
           ),
         ),
+      )
+    ];
+  }
+
+  DefaultTabController _loadTabPage(ThemeData themeData) {
+    return DefaultTabController(
+      length: 2,
+      child: Column(
+        children: [
+          TabBar(
+            labelColor: themeData.colorScheme.primary,
+            indicatorColor: themeData.colorScheme.primary,
+            tabs: const [
+              Tab(text: 'List'),
+              Tab(text: 'Grid'),
+            ],
+          ),
+          Expanded(
+            child: TabBarView(
+              children: [
+                const ExtendedVisibilityDetector(
+                  uniqueKey: Key('listTab'),
+                  child: HomeDetailListPage(),
+                ),
+                _gridTab(themeData),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -90,7 +104,8 @@ class _HomeDetailState extends State<HomeDetail>
           child: CustomScrollView(
             slivers: [
               SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 4.0, vertical: 10),
                 sliver: SliverToBoxAdapter(
                   child: Container(
                     color: Colors.green,
@@ -110,8 +125,8 @@ class _HomeDetailState extends State<HomeDetail>
                               child: Container(
                                 color: Colors.blue,
                                 child: Center(
-                                    child:
-                                        Text('${_gridList[index % 4]} at $index')),
+                                    child: Text(
+                                        '${_gridList[index % 4]} at $index')),
                               ),
                             ),
                           );

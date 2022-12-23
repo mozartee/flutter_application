@@ -78,7 +78,7 @@ dependencies:
   # 路由框架 https://github.com/theyakka/fluro
   # fluro: ^2.0.3
   # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
-  # cached_network_image: ^3.2.1
+  # cached_network_image: ^3.2.3
   # 格式化String https://github.com/Naddiseo/dart-sprintf
   sprintf: ^6.0.0
   # 扫码 https://github.com/juliuscanute/qr_code_scanner

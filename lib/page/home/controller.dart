@@ -1,6 +1,6 @@
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/common/entity/comment.dart';
+import 'package:ost_digital_application/common/entity/photo.dart';
 import 'package:ost_digital_application/common/service/index.dart';
 
 import 'state.dart';
@@ -9,6 +9,7 @@ class HomeController extends GetxController with StateMixin<String> {
   HomeController();
 
   final homeState = HomeState();
+  final _size = 20;
 
   // Getx RxStatus
   void testForChange() async {
@@ -21,44 +22,65 @@ class HomeController extends GetxController with StateMixin<String> {
   void updateState() async {
     change(null, status: RxStatus.loading());
 
-    homeState.comments = await _request();
-    // await _formData();
+    dynamic data = await _request();
+    _handleData(data);
+  }
+
+  _handleData(dynamic data, {bool load = false}) {
+    if (data is OSTError) {
+      change(data.msg, status: RxStatus.error(data.msg));
+      return;
+    }
+
+    if (load == true) {
+      homeState.photos.addAll(data);
+    } else {
+      homeState.photos = data;
+    }
     change('Success loding!', status: RxStatus.success());
   }
 
-  Future _formData() async {
-    await HttpUtil().postForm(
-      'https://t.duodian.api.cheng1hu.com/v1/index/recommendDoctor',
-      data: {
-        "channel": "ios",
-        "version": '1.0.0',
-        'sign': 'test',
-      },
-    );
+  _setParams([int page = 1]) {
+    return {
+      'resourceType': '0,2,4',
+      'page': homeState.page,
+      'size': _size,
+      'type': 'json',
+    };
   }
 
-  Future<List<CommentEntity>> _request() async {
-    final response = await HttpUtil().fetch(Api.comments);
-    List list = response;
-    List<CommentEntity> comments =
-        list.map((e) => CommentEntity.fromJson(e)).toList();
-    return comments;
+  _request([int page = 1]) async {
+    final response = await HttpUtil().fetch(
+      Api.photos,
+      quertParameters: _setParams(page),
+    );
+    if (response is OSTError) {
+      return response;
+    }
+    List list = response as List;
+    List<PhotoEntity> photos =
+        list.map((e) => PhotoEntity.fromJson(e)).toList();
+    return photos;
   }
 
   // EasyRefresh
   onRefresh() async {
-    homeState.comments = await _request();
+    homeState.page = 1;
+    dynamic data = await _request();
+    _handleData(data);
     homeState.refreshController.finishRefresh();
     homeState.refreshController.resetFooter();
     update();
   }
 
   onLoad() async {
-    await Future.delayed(const Duration(seconds: 2));
-    homeState.itemCount += 10;
-    homeState.refreshController.finishLoad(homeState.itemCount >= 30
-        ? IndicatorResult.noMore
-        : IndicatorResult.success);
+    homeState.page += 1;
+    dynamic data = await _request(homeState.page);
+    _handleData(data, load: true);
+    homeState.refreshController.finishLoad(
+        homeState.photos.length < homeState.page * _size
+            ? IndicatorResult.noMore
+            : IndicatorResult.success);
     update();
   }
 
@@ -71,13 +93,15 @@ class HomeController extends GetxController with StateMixin<String> {
       controlFinishRefresh: true,
       controlFinishLoad: true,
     );
-    homeState.itemCount = 10;
+    homeState.page = 1;
+    homeState.photos = [];
   }
 
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所
   @override
   void onReady() {
-    testForChange();
+    // testForChange();
+    updateState();
     super.onReady();
   }
 
