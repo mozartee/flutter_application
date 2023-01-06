@@ -2,6 +2,9 @@ class Languages {
   static const String chinese = 'chinese';
   static const String english = 'english';
 
+  static const String cancel = 'cancel';
+  static const String done = 'done';
+
   static const String splashbutton = 'splashbutton';
 
   static const String loadingDefaultStatus = 'loadingDefaultStatus';

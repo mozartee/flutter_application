@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:get/get.dart';
+import 'package:ost_digital_application/page/mine/bindings.dart';
 
 import '../../page/home/index.dart';
 import '../../page/home_detail/view.dart';
@@ -29,14 +30,24 @@ List<GetPage> getPages() => [
         page: () => Signin(),
         binding: SigninBingding(),
       ),
-      GetPage(name: Routes.signup, page: () => SignUp()),
+      GetPage(
+        name: Routes.signup,
+        page: () => SignUp(),
+      ),
       GetPage(
         name: Routes.home,
         page: () => const HomePage(),
         binding: HomeBinding(),
       ),
-      GetPage(name: Routes.homeDetail, page: () => HomeDetail()),
-      GetPage(name: Routes.mine, page: () => Mine()),
+      GetPage(
+        name: Routes.homeDetail,
+        page: () => HomeDetail(),
+      ),
+      GetPage(
+        name: Routes.mine,
+        page: () => Mine(),
+        binding: MineBinding(),
+      ),
       GetPage(
         name: Routes.setting,
         page: () => Setting(),

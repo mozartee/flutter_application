@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../common/langs/index.dart';
 import '../../page/home/index.dart';
@@ -13,9 +14,13 @@ class TabbarPage extends StatelessWidget {
   final List<Widget> _pages = const [HomePage(), Mine()];
   final List<BottomNavigationBarItem> _items = [
     BottomNavigationBarItem(
-        icon: const Icon(Icons.home_max), label: Languages.tabbarhome.tr),
+      icon: const  Icon(Icons.whatsapp),
+      label: Languages.tabbarhome.tr,
+    ),
     BottomNavigationBarItem(
-        icon: const Icon(Icons.people_outline), label: Languages.tabbarmine.tr),
+      icon: const FaIcon(FontAwesomeIcons.theRedYeti),
+      label: Languages.tabbarmine.tr,
+    ),
   ];
 
   final TabBarController _controller =

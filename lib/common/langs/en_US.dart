@@ -5,6 +5,8 @@ import 'keys.dart';
 const Map<String, String> en_US = {
   Languages.chinese: 'Chinese',
   Languages.english: 'English',
+  Languages.cancel: 'Cancel',
+  Languages.done: 'Done',
   Languages.splashbutton: 'Get Started',
   Languages.loadingDefaultStatus: 'Loading',
   Languages.loadingEmpty: 'Oh, it`s empty, what can I do?',

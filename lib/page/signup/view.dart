@@ -34,7 +34,7 @@ class SignUp extends StatelessWidget {
       //       // );
       //     });
 
-      showAlert(context, title: 'Alert', content: 'content');
+      // showAlert(context, title: 'Alert', content: 'content');
 
       // Get.defaultDialog(
       //   middleText: 'middleText',

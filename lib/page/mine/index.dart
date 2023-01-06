@@ -1,3 +1,4 @@
 library mine;
 
-export 'mine.dart';
+export 'view.dart';
+export 'widgets/body.dart';

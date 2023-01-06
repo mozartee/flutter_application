@@ -5,6 +5,8 @@ import 'keys.dart';
 const Map<String, String> zh_CN = {
   Languages.chinese: '中文',
   Languages.english: '英语',
+  Languages.cancel: '取消',
+  Languages.done: '确定',
   Languages.splashbutton: '直接进入',
   Languages.loadingDefaultStatus: '加载中',
   Languages.loadingEmpty: '暂无数据~',
