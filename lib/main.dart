@@ -8,7 +8,7 @@ import 'common/langs/index.dart';
 import 'common/routes/index.dart';
 import 'common/theme/index.dart';
 import 'common/utils/index.dart';
-import 'global.dart';
+import 'common/utils/global.dart';
 
 Future<void> main() async {
   // // 确保初始化完成

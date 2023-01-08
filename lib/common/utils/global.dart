@@ -2,8 +2,8 @@ import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 import 'package:ost_digital_application/common/widget/refresh.dart';
 
-import 'common/help/index.dart';
-import 'common/widget/index.dart';
+import '../help/index.dart';
+import '../widget/index.dart';
 
 /// 初始化处理
 class Global {

@@ -6,6 +6,7 @@ import 'package:ost_digital_application/page/demo/jobfind_view.dart';
 import '../../common/help/index.dart';
 import '../../common/routes/key.dart';
 import '../../common/widget/index.dart';
+import '../demo/jobapply_view.dart';
 
 class MineController extends GetxController {
   bool profileCompleted = false;
@@ -29,7 +30,8 @@ class MineController extends GetxController {
   onTapApplications() async {
     // await Future.delayed(const Duration(seconds: 2));
 
-    showSingleAlert(title: 'This is a single action alert');
+    // showSingleAlert(title: 'This is a single action alert');
+    Get.to(const JobApplyPage());
     update();
   }
 
