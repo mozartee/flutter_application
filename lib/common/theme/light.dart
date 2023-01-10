@@ -8,6 +8,15 @@ class ThemeDataLight {
   static ThemeData get theme => ThemeData(
         brightness: Brightness.light,
         useMaterial3: true,
+        // scaffoldBackgroundColor: Colors.transparent,
+        // appBarTheme: const AppBarTheme(
+        //   shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.only(
+        //       topLeft: Radius.circular(20),
+        //       topRight: Radius.circular(20),
+        //     ),
+        //   ),
+        // ),
         // colorSchemeSeed: Colors.blue, //OSTColors.primary,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(

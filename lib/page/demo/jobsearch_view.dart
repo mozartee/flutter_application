@@ -17,12 +17,66 @@ class JobSearchPage extends GetView<DemoController> {
         title: const Text('Explore Jobs'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => _showFilter(context),
             icon: const FaIcon(FontAwesomeIcons.filter, size: 18),
           )
         ],
       ),
       body: _buildBody(context),
+    );
+  }
+
+  _showFilter(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      constraints:
+          BoxConstraints(maxHeight: Get.height - Get.mediaQuery.padding.top),
+      isScrollControlled: true,
+      builder: (context) {
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            title: const Text('Filter'),
+            automaticallyImplyLeading: false,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: const Icon(Icons.close),
+              ),
+            ],
+          ),
+          body: Material(
+            color: Colors.white,
+            child: ListView.separated(
+              itemBuilder: (_, index) {
+                JobEntity entity = controller.jobList[index];
+                return ListTile(
+                  title: Text(entity.title ?? ''),
+                  subtitle: Text("${entity.time ?? ''} • ${entity.address}"),
+                  onTap: () {},
+                );
+              },
+              separatorBuilder: (_, index) {
+                return const Divider(
+                  indent: 16,
+                  height: 1,
+                );
+              },
+              itemCount: controller.jobList.length,
+            ),
+          ),
+        );
+      },
     );
   }
 

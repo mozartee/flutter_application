@@ -37,30 +37,52 @@ class Signin extends GetView<SigninController> {
 
   Container _buildButton(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 15.w, right: 15.w),
+      margin: EdgeInsets.only(left: 16.w, right: 16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           OSTTextField(
+            height: 50,
             hintText: Languages.accounthint.tr,
             textInputAction: TextInputAction.done,
           ),
           Gap.h.dp10,
           SizedBox(
+            height: 50,
             width: double.infinity,
-            height: Constant.buttonHeight,
-            child: ClipRRect(
-              // borderRadius: BorderRadius.circular(24.h),
-              child: ElevatedButton(
-                onPressed: () => controller.tapSignin(context),
-                child: Shimmer.fromColors(
-                  baseColor: Colors.white,
-                  highlightColor: Colors.orange,
-                  child: Text(Languages.signin.tr),
-                ),
+            child: TextButton(
+              onPressed: () => controller.tapSignin(context),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith((states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    return Colors.blue[300];
+                  }
+                  return Colors.blue;
+                }),
+                shape: MaterialStateProperty.resolveWith((states) {
+                  return RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10));
+                }),
+              ),
+              child: Shimmer.fromColors(
+                baseColor: Colors.white,
+                highlightColor: Colors.orange,
+                child: Text(Languages.signin.tr),
               ),
             ),
           ),
+          // SizedBox(
+          //   width: double.infinity,
+          //   height: Constant.buttonHeight,
+          //   child: ElevatedButton(
+          //     onPressed: () => controller.tapSignin(context),
+          //     child: Shimmer.fromColors(
+          //       baseColor: Colors.white,
+          //       highlightColor: Colors.orange,
+          //       child: Text(Languages.signin.tr),
+          //     ),
+          //   ),
+          // ),
           Gap.h.dp4,
           RichText(
             text: TextSpan(

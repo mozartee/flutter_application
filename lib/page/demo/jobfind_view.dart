@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/entity/job.dart';
@@ -6,8 +8,7 @@ import 'package:ost_digital_application/page/demo/controller.dart';
 class JobFindPage extends StatelessWidget {
   JobFindPage({super.key});
 
-  final DemoController controller =
-      Get.put<DemoController>(DemoController());
+  final DemoController controller = Get.put<DemoController>(DemoController());
 
   @override
   Widget build(BuildContext context) {
@@ -42,19 +43,19 @@ class JobFindPage extends StatelessWidget {
 
   SafeArea _buildHeader() {
     return SafeArea(
-      child: Column(
-        children: [
-          Text(
-            'Tell us what kind of',
-            style: Get.theme.textTheme.headline5!
-                .copyWith(fontWeight: FontWeight.w600),
-          ),
-          Text(
-            'jobs you are looking for',
-            style: Get.theme.textTheme.headline5!
-                .copyWith(fontWeight: FontWeight.w600),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 56),
+        child: Column(
+          children: [
+            Text(
+              'Tell us what kind of jobs you are looking for',
+              textAlign: TextAlign.center,
+              style: Get.theme.textTheme.headline5!.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -144,7 +145,9 @@ class GridItem extends StatelessWidget {
               AnimatedSwitcher(
                 duration: const Duration(milliseconds: 250),
                 transitionBuilder: (child, animation) {
-                  return RotationTransition(turns: animation, child: child);
+                  Tween<double> tween = Tween(begin: -pi/12, end: 0);
+                  return RotationTransition(
+                      turns: tween.animate(animation), child: child);
                 },
                 child: entity.choosed == true
                     ? Icon(

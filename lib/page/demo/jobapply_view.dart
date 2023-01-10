@@ -3,6 +3,7 @@ import 'dart:ui';
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:ost_digital_application/page/demo/signin_dialog.dart';
+import 'package:ost_digital_application/page/demo/super_store.dart';
 
 class JobApplyPage extends StatefulWidget {
   const JobApplyPage({super.key});
@@ -26,7 +27,7 @@ class _JobApplyPageState extends State<JobApplyPage> {
           ),
           Positioned.fill(
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
               child: const SizedBox(),
             ),
           ),
@@ -70,19 +71,42 @@ class _JobApplyPageState extends State<JobApplyPage> {
                       ),
                     ),
                     const Spacer(flex: 2),
-                    TextButton(
-                      onPressed: () {
-                        Future.delayed(const Duration(milliseconds: 800))
-                            .then((value) {
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: TextButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.resolveWith((states) {
+                            if (states.contains(MaterialState.pressed)) {
+                              return Colors.blue[300];
+                            }
+                            return Colors.blue;
+                          }),
+                          shape: MaterialStateProperty.resolveWith((states) {
+                            return RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16));
+                          }),
+                        ),
+                        onPressed: () {
                           showLogin = true;
                           setState(() {});
-                          showCustomDialog(context, onValue: (_) {
+                          showCustomDialog(context, onValue: (result) {
                             showLogin = false;
                             setState(() {});
+                            if (result == true) {
+                              debugPrint('assdada');
+                              Future.delayed(transitionDuration, () {
+                                Get.to(() => const SuperStorePage());
+                              });
+                            }
                           });
-                        });
-                      },
-                      child: const Text('Login'),
+                        },
+                        child: const Text(
+                          'Login',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 24),

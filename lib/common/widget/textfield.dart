@@ -9,13 +9,14 @@ import '../help/index.dart';
 class OSTTextField extends StatelessWidget {
   const OSTTextField({
     Key? key,
+    this.height,
     this.controller,
     this.focusNode,
     this.text,
     this.autoFocus = false,
     this.obscureText = false,
     this.textInputAction,
-    this.maxLines,
+    this.maxLines = 1,
     this.maxLength,
     this.inputFormatters,
     this.hintText,
@@ -28,6 +29,8 @@ class OSTTextField extends StatelessWidget {
     this.onEditingComplete,
     this.onSubmitted,
   }) : super(key: key);
+
+  final double? height;
 
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -56,14 +59,14 @@ class OSTTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    var textField = TextField(
       decoration: _inputDecoration(),
       controller: controller,
       focusNode: focusNode,
       autofocus: autoFocus,
       obscureText: obscureText,
       textInputAction: textInputAction,
-      maxLines: maxLines ?? (obscureText ? 1 : null),
+      maxLines: maxLines,
       maxLength: maxLength,
       onTap: onTap,
       onChanged: onChanged,
@@ -71,6 +74,13 @@ class OSTTextField extends StatelessWidget {
       onSubmitted: onSubmitted,
       inputFormatters: inputFormatters,
     );
+    if (height != null) {
+      return SizedBox(
+        height: height,
+        child: textField,
+      );
+    }
+    return textField;
   }
 
   InputDecoration _inputDecoration() {
@@ -83,7 +93,8 @@ class OSTTextField extends StatelessWidget {
       prefixIcon: prefix,
       suffixIcon: suffix,
       enabled: enabled,
-      isDense: true, // 减少垂直高度，防止高度太小显示不全
+      // isDense: true, // 减少垂直高度，防止高度太小显示不全
+      contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10.0),
     );
   }
 
