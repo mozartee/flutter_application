@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../help/index.dart';
+import 'theme_extensions.dart';
 
 class ThemeDataLight {
   static ThemeData get theme => ThemeData(
@@ -17,7 +16,15 @@ class ThemeDataLight {
         //     ),
         //   ),
         // ),
-        // colorSchemeSeed: Colors.blue, //OSTColors.primary,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: OSTColors.primary,
+          surface: Colors.white,
+        ),
+        scaffoldBackgroundColor: Colors.white,
+        extensions: [
+          ListTileColor.light(),
+        ],
+        fontFamily: 'Poppins',
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             onPrimary: ColorScheme.fromSwatch().onPrimary,

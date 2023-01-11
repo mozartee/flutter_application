@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/entity/job.dart';
-import 'package:ost_digital_application/page/demo/data.dart';
-import 'package:ost_digital_application/page/demo/jobsearch_view.dart';
 
+import 'data.dart';
 import 'jobdetail_view.dart';
+import 'jobsearch_view.dart';
 
 const String chooseJobControllerTag = 'choose';
 const String jobDetailControllerTag = 'jobDetail';

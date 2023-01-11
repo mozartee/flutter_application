@@ -3,7 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/entity/job.dart';
-import 'package:ost_digital_application/page/demo/controller.dart';
+
+import 'controller.dart';
 
 class JobFindPage extends StatelessWidget {
   JobFindPage({super.key});
@@ -145,7 +146,7 @@ class GridItem extends StatelessWidget {
               AnimatedSwitcher(
                 duration: const Duration(milliseconds: 250),
                 transitionBuilder: (child, animation) {
-                  Tween<double> tween = Tween(begin: -pi/12, end: 0);
+                  Tween<double> tween = Tween(begin: -pi / 12, end: 0);
                   return RotationTransition(
                       turns: tween.animate(animation), child: child);
                 },

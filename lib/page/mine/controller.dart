@@ -1,12 +1,12 @@
 import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/page/demo/jobfind_view.dart';
 
 import '../../common/help/index.dart';
 import '../../common/routes/key.dart';
 import '../../common/widget/index.dart';
-import '../demo/jobapply_view.dart';
+
+import '../example/jobapply_view.dart';
 
 class MineController extends GetxController {
   bool profileCompleted = false;
@@ -23,7 +23,7 @@ class MineController extends GetxController {
   onChangeEditSport() async {
     // await Future.delayed(const Duration(seconds: 2));
 
-    Get.to(JobFindPage());
+    Get.to(() => const JobApplyPage());
     update();
   }
 
@@ -31,7 +31,6 @@ class MineController extends GetxController {
     // await Future.delayed(const Duration(seconds: 2));
 
     // showSingleAlert(title: 'This is a single action alert');
-    Get.to(const JobApplyPage());
     update();
   }
 

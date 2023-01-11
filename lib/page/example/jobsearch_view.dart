@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/entity/job.dart';
+import 'package:ost_digital_application/common/theme/theme_extensions.dart';
 import 'package:ost_digital_application/common/utils/index.dart';
-import 'package:ost_digital_application/page/demo/controller.dart';
+
+import 'controller.dart';
 
 class JobSearchPage extends GetView<DemoController> {
   const JobSearchPage({super.key});
@@ -56,10 +58,11 @@ class JobSearchPage extends GetView<DemoController> {
             ],
           ),
           body: Material(
-            color: Colors.white,
+            color: Theme.of(context).scaffoldBackgroundColor,
             child: ListView.separated(
               itemBuilder: (_, index) {
                 JobEntity entity = controller.jobList[index];
+
                 return ListTile(
                   title: Text(entity.title ?? ''),
                   subtitle: Text("${entity.time ?? ''} • ${entity.address}"),
@@ -85,29 +88,26 @@ class JobSearchPage extends GetView<DemoController> {
       builder: (_) {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: CustomScrollView(
-                slivers: [
-                  SliverToBoxAdapter(child: _buildSearchBar()),
-                  SliverToBoxAdapter(child: _buildTitleBar()),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        JobEntity entity = controller.jobList[index];
-                        return JobCard(
-                          entity: entity,
-                          onTap: () => controller.onTapTile(index),
-                          onTapBookmark: () => controller.onTapBookmark(index),
-                        );
-                      },
-                      childCount: controller.jobList.length,
-                    ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(child: _buildSearchBar(context)),
+                SliverToBoxAdapter(child: _buildTitleBar()),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      JobEntity entity = controller.jobList[index];
+                      return JobCard(
+                        entity: entity,
+                        onTap: () => controller.onTapTile(index),
+                        onTapBookmark: () => controller.onTapBookmark(index),
+                      );
+                    },
+                    childCount: controller.jobList.length,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );
@@ -127,18 +127,20 @@ class JobSearchPage extends GetView<DemoController> {
     );
   }
 
-  _buildSearchBar() {
+  _buildSearchBar(BuildContext context) {
+    var listTileColor = Theme.of(context).extension<ListTileColor>();
+
     return Container(
       margin: const EdgeInsets.only(top: 10),
       decoration: BoxDecoration(
-        color: const Color(0xFFF4F7FD),
+        color: listTileColor?.backgroundColor,
         borderRadius: BorderRadius.circular(30),
       ),
-      child: const TextField(
+      child: TextField(
         decoration: InputDecoration(
           border: InputBorder.none,
-          fillColor: Color(0xFFF4F7FD),
-          prefixIcon: Icon(Icons.search),
+          fillColor: listTileColor?.backgroundColor,
+          prefixIcon: const Icon(Icons.search),
           hintText: 'Design',
         ),
       ),
@@ -159,13 +161,15 @@ class JobCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var listTileColor = Theme.of(context).extension<ListTileColor>();
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: Material(
         borderRadius: BorderRadius.circular(12),
         color: entity.choosed == true
             ? const Color(0xFFF9DFD4)
-            : const Color(0xFFF4F7FD),
+            : listTileColor?.backgroundColor,
         child: ListTile(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),

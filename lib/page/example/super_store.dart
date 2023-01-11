@@ -7,7 +7,7 @@ class SuperStorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomePage();
+    return const HomePage();
   }
 }
 
@@ -25,7 +25,7 @@ class _HomePageState extends State with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
     _animation = Tween(end: 1.0, begin: 0.0).animate(_controller)
       ..addListener(() {
         setState(() {});

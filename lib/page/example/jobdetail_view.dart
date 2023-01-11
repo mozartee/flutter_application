@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:ost_digital_application/common/entity/job.dart';
 import 'package:ost_digital_application/common/help/assets.dart';
 import 'package:ost_digital_application/common/utils/index.dart';
-import 'package:ost_digital_application/page/demo/jobapply_view.dart';
+
 import 'data.dart';
 
 class JobDetailPage extends StatelessWidget {

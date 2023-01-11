@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
-import 'package:ost_digital_application/page/demo/signin_dialog.dart';
-import 'package:ost_digital_application/page/demo/super_store.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'package:ost_digital_application/page/example/signin_dialog.dart';
+import 'jobfind_view.dart';
 
 class JobApplyPage extends StatefulWidget {
   const JobApplyPage({super.key});
@@ -54,18 +56,19 @@ class _JobApplyPageState extends State<JobApplyPage> {
                     SizedBox(
                       width: 260,
                       child: Column(
-                        children: const [
+                        children: [
                           Text(
                             'Learn design & code',
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 60,
                               fontWeight: FontWeight.w700,
                               height: 1.2,
                             ),
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           Text(
                             "Don’t skip design. Learn design and code, by building real apps with Flutter and Swift. Complete courses about the best tools.",
+                            style: GoogleFonts.poppins(),
                           ),
                         ],
                       ),
@@ -97,7 +100,8 @@ class _JobApplyPageState extends State<JobApplyPage> {
                             if (result == true) {
                               debugPrint('assdada');
                               Future.delayed(transitionDuration, () {
-                                Get.to(() => const SuperStorePage());
+                                // Get.to(() => const SuperStorePage());
+                                Get.to(() => JobFindPage());
                               });
                             }
                           });

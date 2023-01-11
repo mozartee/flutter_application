@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/help/assets.dart';
+import 'package:ost_digital_application/common/theme/theme_extensions.dart';
 import 'package:ost_digital_application/common/utils/gap.dart';
 import 'package:ost_digital_application/page/mine/controller.dart';
 
@@ -12,31 +13,26 @@ class BodyView extends GetView<MineController> {
     return GetBuilder<MineController>(
       init: MineController(),
       builder: (_) {
-        return Container(
-          color: Colors.white,
-          width: double.infinity,
-          height: double.infinity,
-          child: SingleChildScrollView(
-            controller: controller.scrollController,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildHeader(),
-                Gap.h.dp10,
-                _buildText(),
-                Gap.h.dp10,
-                _buildBody(),
-              ],
-            ),
+        return SingleChildScrollView(
+          controller: controller.scrollController,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(context),
+              Gap.h.dp10,
+              _buildText(),
+              Gap.h.dp10,
+              _buildBody(),
+            ],
           ),
         );
       },
     );
   }
 
-  _buildHeader() {
+  _buildHeader(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -45,7 +41,7 @@ class BodyView extends GetView<MineController> {
           Gap.h.dp16,
           Text(
             'Raffialdo Bay',
-            style: Get.theme.textTheme.headline5,
+            style: Theme.of(context).textTheme.headline5,
           ),
           Gap.h.dp10,
           const Text('UI/UX Designer'),
@@ -138,12 +134,14 @@ class BodyView extends GetView<MineController> {
     Color? background,
     Function()? onTap,
   }) {
+    final listTileColor = Get.theme.extension<ListTileColor>();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Material(
         color: Colors.transparent,
         child: ListTile(
-          tileColor: background ?? const Color(0xFFF4F7FD),
+          tileColor: background ??
+              listTileColor?.backgroundColor, //const Color(0xFFF4F7FD),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           leading: Icon(leading, color: color),

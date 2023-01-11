@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../help/index.dart';
+import 'theme_extensions.dart';
 
 class ThemeDataDark {
   static ThemeData get theme => ThemeData(
         brightness: Brightness.dark,
         useMaterial3: true,
-        // colorSchemeSeed: Colors.blue[800], //OSTColors.primary,
+        colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.dark,
+          seedColor: OSTColors.primaryDark,
+          surface: const Color(0xFF303030),
+        ),
+        extensions: [
+          ListTileColor.dark(),
+        ],
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             onPrimary: ColorScheme.fromSwatch().onPrimary,
