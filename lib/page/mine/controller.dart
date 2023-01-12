@@ -1,6 +1,7 @@
 import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ost_digital_application/page/example/task_app/splash/splash.dart';
 
 import '../../common/help/index.dart';
 import '../../common/routes/key.dart';
@@ -31,6 +32,7 @@ class MineController extends GetxController {
     // await Future.delayed(const Duration(seconds: 2));
 
     // showSingleAlert(title: 'This is a single action alert');
+    Get.to(() => const TaskSplashPage());
     update();
   }
 
