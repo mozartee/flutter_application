@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ost_digital_application/common/help/assets.dart';
 import 'package:ost_digital_application/page/example/task_app/splash/data.dart';
+import 'package:ost_digital_application/page/example/task_app/tabbar.dart';
 
 class TaskSplashPage extends StatefulWidget {
   const TaskSplashPage({super.key});
@@ -23,7 +25,8 @@ class _TaskSplashPageState extends State<TaskSplashPage> {
       ..addListener(() {
         offset = controller.offset;
         page = controller.page!;
-        print('$offset , $page , $currentPage');
+        currentOffset = offset - Get.width * page.truncate();
+        debugPrint('$offset , $currentOffset , $page , $currentPage');
       });
 
     currentPage = 0;
@@ -37,8 +40,14 @@ class _TaskSplashPageState extends State<TaskSplashPage> {
     super.dispose();
   }
 
+  _onPageChanged(int index) {
+    currentPage = index;
+    setState(() {});
+  }
+
   _onPressed(int index) {
     if (index == taskSplashList.length - 1) {
+      _skip();
     } else {
       controller.animateToPage(
         index + 1,
@@ -55,6 +64,10 @@ class _TaskSplashPageState extends State<TaskSplashPage> {
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOut,
     );
+  }
+
+  _skip() {
+    Get.off(() => const TaskTabBarPage(), fullscreenDialog: false);
   }
 
   @override
@@ -79,13 +92,11 @@ class _TaskSplashPageState extends State<TaskSplashPage> {
         return _TaskSplashItem(
           data: data,
           onPressed: () => _onPressed(index),
+          onPressedSkip: () => _skip(),
         );
       },
       itemCount: taskSplashList.length,
-      onPageChanged: (index) {
-        currentPage = index;
-        setState(() {});
-      },
+      onPageChanged: (index) => _onPageChanged(index),
     );
   }
 
@@ -125,10 +136,12 @@ class _TaskSplashItem extends StatelessWidget {
     Key? key,
     required this.data,
     this.onPressed,
+    this.onPressedSkip,
   }) : super(key: key);
 
   final Map<String, dynamic> data;
   final VoidCallback? onPressed;
+  final VoidCallback? onPressedSkip;
 
   @override
   Widget build(BuildContext context) {
@@ -141,11 +154,11 @@ class _TaskSplashItem extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 90.0),
+          padding: const EdgeInsets.symmetric(horizontal: 80.0),
           child: Text(
             data['title'],
             textAlign: TextAlign.center,
-            style: GoogleFonts.ubuntu().copyWith(
+            style: Get.theme.textTheme.titleMedium!.copyWith(
               fontWeight: FontWeight.w700,
               fontSize: 24,
             ),
@@ -188,7 +201,7 @@ class _TaskSplashItem extends StatelessWidget {
         ),
         Center(
           child: TextButton(
-            onPressed: () {},
+            onPressed: onPressedSkip,
             child: Text(
               'Skip',
               style: GoogleFonts.ubuntu().copyWith(

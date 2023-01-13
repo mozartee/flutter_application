@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../help/index.dart';
 import 'theme_extensions.dart';
@@ -15,6 +16,8 @@ class ThemeDataDark {
         extensions: [
           ListTileColor.dark(),
         ],
+        textTheme: GoogleFonts.poppinsTextTheme(
+            ThemeData(brightness: Brightness.dark).textTheme),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             onPrimary: ColorScheme.fromSwatch().onPrimary,

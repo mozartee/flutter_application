@@ -1,0 +1,118 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter assemble --no-version-check --output=/Users/zengxiang/Documents/ost_code/ost_digital_application/build/ios/Debug-iphonesimulator/ -dTargetPlatform=ios -dTargetFile=/Users/zengxiang/Documents/ost_code/ost_digital_application/lib/main.dart -dBuildMode=debug -dIosArchs=arm64 -dSdkRoot=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator15.5.sdk -dSplitDebugInfo= -dTreeShakeIcons=false -dTrackWidgetCreation=true -dDartObfuscation=false -dEnableBitcode= --ExtraGenSnapshotOptions= --DartDefines=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ== --ExtraFrontEndOptions= -dCodesignIdentity=- debug_ios_bundle_flutter_assets
+
+## exception
+
+RangeError: RangeError (index): Invalid value: Valid value range is empty: 0
+
+```
+#0      _StringBase.[] (dart:core-patch/string_patch.dart:260:41)
+#1      StdoutHandler.handler (package:flutter_tools/src/compile.dart:140:22)
+#2      _rootRunUnary (dart:async/zone.dart:1434:47)
+#3      _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#4      _CustomZone.runUnaryGuarded (dart:async/zone.dart:1244:7)
+#5      _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:341:11)
+#6      _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#7      _SinkTransformerStreamSubscription._add (dart:async/stream_transformers.dart:63:11)
+#8      _EventSinkWrapper.add (dart:async/stream_transformers.dart:13:11)
+#9      _StringAdapterSink.add (dart:convert/string_conversion.dart:238:11)
+#10     _LineSplitterSink._addLines (dart:convert/line_splitter.dart:170:13)
+#11     _LineSplitterSink.addSlice (dart:convert/line_splitter.dart:145:5)
+#12     StringConversionSinkMixin.add (dart:convert/string_conversion.dart:163:5)
+#13     _SinkTransformerStreamSubscription._handleData (dart:async/stream_transformers.dart:111:24)
+#14     _rootRunUnary (dart:async/zone.dart:1434:47)
+#15     _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#16     _CustomZone.runUnaryGuarded (dart:async/zone.dart:1244:7)
+#17     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:341:11)
+#18     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#19     _SinkTransformerStreamSubscription._add (dart:async/stream_transformers.dart:63:11)
+#20     _EventSinkWrapper.add (dart:async/stream_transformers.dart:13:11)
+#21     _StringAdapterSink.add (dart:convert/string_conversion.dart:238:11)
+#22     _StringAdapterSink.addSlice (dart:convert/string_conversion.dart:243:7)
+#23     _Utf8ConversionSink.addSlice (dart:convert/string_conversion.dart:317:20)
+#24     _Utf8ConversionSink.add (dart:convert/string_conversion.dart:310:5)
+#25     _ConverterStreamEventSink.add (dart:convert/chunked_conversion.dart:72:18)
+#26     _SinkTransformerStreamSubscription._handleData (dart:async/stream_transformers.dart:111:24)
+#27     _rootRunUnary (dart:async/zone.dart:1434:47)
+#28     _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#29     _CustomZone.runUnaryGuarded (dart:async/zone.dart:1244:7)
+#30     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:341:11)
+#31     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#32     _SyncStreamControllerDispatch._sendData (dart:async/stream_controller.dart:774:19)
+#33     _StreamController._add (dart:async/stream_controller.dart:648:7)
+#34     _StreamController.add (dart:async/stream_controller.dart:596:5)
+#35     _Socket._onData (dart:io-patch/socket_patch.dart:2314:41)
+#36     _rootRunUnary (dart:async/zone.dart:1442:13)
+#37     _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#38     _CustomZone.runUnaryGuarded (dart:async/zone.dart:1244:7)
+#39     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:341:11)
+#40     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#41     _SyncStreamControllerDispatch._sendData (dart:async/stream_controller.dart:774:19)
+#42     _StreamController._add (dart:async/stream_controller.dart:648:7)
+#43     _StreamController.add (dart:async/stream_controller.dart:596:5)
+#44     new _RawSocket.<anonymous closure> (dart:io-patch/socket_patch.dart:1839:33)
+#45     _NativeSocket.issueReadEvent.issue (dart:io-patch/socket_patch.dart:1322:14)
+#46     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#47     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#48     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#49     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:193:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 3.0.1, on macOS 12.2.1 21D62 darwin-arm, locale zh-Hans-CN)
+    • Flutter version 3.0.1 at /Users/zengxiang/Documents/develop/flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision fb57da5f94 (8 months ago), 2022-05-19 15:50:29 -0700
+    • Engine revision caaafc5604
+    • Dart version 2.17.1
+    • DevTools version 2.12.2
+    • Pub download mirror https://pub.flutter-io.cn
+    • Flutter download mirror https://storage.flutter-io.cn
+
+[!] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
+    • Android SDK at /Users/zengxiang/Library/Android/sdk
+    ✗ cmdline-tools component is missing
+      Run `path/to/sdkmanager --install "cmdline-tools;latest"`
+      See https://developer.android.com/studio/command-line for more details.
+    ✗ Android license status unknown.
+      Run `flutter doctor --android-licenses` to accept the SDK licenses.
+      See https://flutter.dev/docs/get-started/install/macos#android-setup for more details.
+
+[✓] Xcode - develop for iOS and macOS (Xcode 13.4.1)
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • CocoaPods version 1.11.3
+
+[✓] Chrome - develop for the web
+    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+[✓] Android Studio (version 4.1)
+    • Android Studio at /Applications/Android Studio.app/Contents
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • Java version OpenJDK Runtime Environment (build 1.8.0_242-release-1644-b3-6915495)
+
+[✓] VS Code (version 1.74.2)
+    • VS Code at /Applications/Visual Studio Code.app/Contents
+    • Flutter extension version 3.56.0
+
+[✓] Connected device (3 available)
+    • iPhone 13 (mobile) • 84E0F06C-986D-4250-A948-90738F2F58FF • ios            • com.apple.CoreSimulator.SimRuntime.iOS-15-5 (simulator)
+    • macOS (desktop)    • macos                                • darwin-arm64   • macOS 12.2.1 21D62 darwin-arm
+    • Chrome (web)       • chrome                               • web-javascript • Google Chrome 95.0.4638.54
+    ! Error: iPad is not connected. Xcode will continue when iPad is connected. (code -13)
+    ! Error: zZ is not connected. Xcode will continue when zZ is connected. (code -13)
+    ! Error: 曾祥的iPhone is not connected. Xcode will continue when 曾祥的iPhone is connected. (code -13)
+
+[✓] HTTP Host Availability
+    • All required HTTP hosts are available
+
+! Doctor found issues in 1 category.
+```
