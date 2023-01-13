@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/help/assets.dart';
 
+import 'data.dart';
+
 class TaskProjectPage extends StatefulWidget {
   const TaskProjectPage({super.key});
 
@@ -11,52 +13,11 @@ class TaskProjectPage extends StatefulWidget {
 }
 
 class _TaskProjectPageState extends State<TaskProjectPage> {
-  final List<Map<String, dynamic>> _filterList = [
-    {
-      'title': 'To do',
-      'selected': true,
-    },
-    {
-      'title': 'In process',
-      'selected': false,
-    },
-    {
-      'title': 'Done',
-      'selected': false,
-    },
-  ];
-
-  final List<Map<String, dynamic>> _list = [
-    {
-      'background': Colors.green[200],
-      'title': 'To do',
-      'type': 'Asap',
-      'work_type': '#UI design',
-      'date': 'Sep 17 - 19',
-      'assign_to': 'a,b,c'
-    },
-    {
-      'background': Colors.yellow[200],
-      'title': 'Brand guide',
-      'type': 'Medium',
-      'work_type': '#graphic design',
-      'date': 'Sep 18 - 20',
-      'assign_to': 'a'
-    },
-    {
-      'background': Colors.deepPurple[100],
-      'title': 'Kickoff meeting',
-      'type': 'Low',
-      'work_type': '#projectmanagment',
-      'date': 'Sep 21',
-      'assign_to': 'a,b'
-    },
-  ];
-
+  
   _onPressed(int index) {
-    for (var element in _filterList) {
+    for (var element in filterList) {
       element['selected'] = false;
-      var selectedElement = _filterList[index];
+      var selectedElement = filterList[index];
       selectedElement['selected'] = true;
     }
     setState(() {});
@@ -72,13 +33,13 @@ class _TaskProjectPageState extends State<TaskProjectPage> {
         SliverList(
           delegate: SliverChildBuilderDelegate(
             ((context, index) {
-              var card = _list[index];
+              var card = list[index];
               return TaskProjectCard(
                 card: card,
                 onTap: (card) => _onTap(card),
               );
             }),
-            childCount: _list.length,
+            childCount: list.length,
           ),
         ),
       ],
@@ -91,12 +52,12 @@ class _TaskProjectPageState extends State<TaskProjectPage> {
           alignment: WrapAlignment.center,
           runAlignment: WrapAlignment.center,
           spacing: 10,
-          children: _filterList.map((e) {
+          children: filterList.map((e) {
             bool selected = e['selected'];
             return SizedBox(
               height: 50,
               child: OutlinedButton(
-                onPressed: () => _onPressed(_filterList.indexOf(e)),
+                onPressed: () => _onPressed(filterList.indexOf(e)),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith((states) =>
                       selected ? const Color(0xFF212121) : Colors.white),

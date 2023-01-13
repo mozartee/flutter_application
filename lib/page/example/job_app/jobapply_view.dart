@@ -4,8 +4,8 @@ import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:ost_digital_application/page/example/signin_dialog.dart';
 import 'jobfind_view.dart';
+import 'signin_dialog.dart';
 
 class JobApplyPage extends StatefulWidget {
   const JobApplyPage({super.key});

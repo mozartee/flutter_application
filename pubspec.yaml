@@ -115,6 +115,7 @@ dependencies:
 
   # App Shortcuts Phone Home Screen 快捷方式 https://github.com/flutter/plugins/tree/master/packages/quick_actions
   quick_actions: 1.0.0
+  table_calendar: ^3.0.9
 
   # 错误收集
   # sentry: ^5.0.0

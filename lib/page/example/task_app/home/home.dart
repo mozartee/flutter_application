@@ -1,13 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ost_digital_application/page/example/task_app/home/goal.dart';
 import 'package:ost_digital_application/page/example/task_app/home/project.dart';
-
-import '../add_task/add_task.dart';
 
 class TaskHomePage extends StatelessWidget {
   const TaskHomePage({super.key});
@@ -42,14 +36,10 @@ class TaskHomePage extends StatelessWidget {
       child: TabBar(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         tabs: _tabs,
-        labelStyle: GoogleFonts.ubuntu().copyWith(
-          fontWeight: FontWeight.w700,
-          fontSize: 30,
-        ),
-        unselectedLabelStyle: GoogleFonts.ubuntu().copyWith(
-          fontWeight: FontWeight.w700,
-          fontSize: 30,
-        ),
+        labelStyle: Get.theme.textTheme.headline4!
+            .copyWith(fontWeight: FontWeight.w900),
+        unselectedLabelStyle: Get.theme.textTheme.headline4!
+            .copyWith(fontWeight: FontWeight.w900),
         labelColor: const Color(0xFF212121),
         unselectedLabelColor: const Color(0xFF999999),
         indicator: const BoxDecoration(),
@@ -59,9 +49,9 @@ class TaskHomePage extends StatelessWidget {
   }
 
   TabBarView _buildTabBarView() {
-    return TabBarView(children: [
+    return const TabBarView(children: [
       TaskProjectPage(),
-      const TaksGoalPage(),
+      TaksGoalPage(),
     ]);
   }
 }

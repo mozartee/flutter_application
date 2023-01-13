@@ -8,37 +8,48 @@ class ThemeDataLight {
   static ThemeData get theme => ThemeData(
         brightness: Brightness.light,
         useMaterial3: true,
-        // scaffoldBackgroundColor: Colors.transparent,
-        // appBarTheme: const AppBarTheme(
-        //   shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.only(
-        //       topLeft: Radius.circular(20),
-        //       topRight: Radius.circular(20),
-        //     ),
-        //   ),
-        // ),
         colorScheme: ColorScheme.fromSeed(
           seedColor: OSTColors.primary,
           surface: Colors.white,
         ),
         scaffoldBackgroundColor: Colors.white,
-        extensions: [
-          ListTileColor.light(),
-        ],
+        appBarTheme: const AppBarTheme(
+          // 列表滑动appBar背景阴影不显示
+          scrolledUnderElevation: 0,
+          // 正常状态下appBar背景阴影不显示
+          elevation: 0,
+        ),
         textTheme: GoogleFonts.poppinsTextTheme(),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            onPrimary: ColorScheme.fromSwatch().onPrimary,
-            primary: ColorScheme.fromSwatch().primary,
+              elevation: 0,
+              primary: Colors.black,
+              onPrimary: ColorScheme.fromSwatch().onPrimary,
+              shadowColor: const Color.fromARGB(0, 53, 29, 29),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16))),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
             elevation: 0,
-            shadowColor: const Color.fromARGB(0, 53, 29, 29),
+            primary: const Color.fromARGB(0, 53, 29, 29),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           ),
         ),
-        // 去除水波纹
+        cardTheme: CardTheme(
+          elevation: 0,
+          margin: EdgeInsets.zero,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        ),
         splashFactory: NoSplash.splashFactory,
         tooltipTheme: const TooltipThemeData(
           triggerMode: TooltipTriggerMode.manual,
         ),
+        extensions: [
+          ListTileColor.light(),
+        ],
       );
   // ThemeData.light().copyWith(
   //       primaryColor: OSTColors.primary,

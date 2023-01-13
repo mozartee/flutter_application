@@ -13,9 +13,12 @@ class ThemeDataDark {
           seedColor: OSTColors.primaryDark,
           surface: const Color(0xFF303030),
         ),
-        extensions: [
-          ListTileColor.dark(),
-        ],
+        appBarTheme: const AppBarTheme(
+          // 列表滑动appBar背景阴影不显示
+          scrolledUnderElevation: 0,
+          // 正常状态下appBar背景阴影不显示
+          elevation: 0,
+        ),
         textTheme: GoogleFonts.poppinsTextTheme(
             ThemeData(brightness: Brightness.dark).textTheme),
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -24,13 +27,32 @@ class ThemeDataDark {
             primary: ColorScheme.fromSwatch().primary,
             elevation: 0,
             shadowColor: Colors.transparent,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            elevation: 0,
+            primary: const Color.fromARGB(0, 53, 29, 29),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          ),
+        ),
+        cardTheme: CardTheme(
+          elevation: 0,
+          margin: EdgeInsets.zero,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         ),
         // 去除水波纹
         splashFactory: NoSplash.splashFactory,
         tooltipTheme: const TooltipThemeData(
           triggerMode: TooltipTriggerMode.manual,
         ),
+        extensions: [
+          ListTileColor.dark(),
+        ],
       );
   //  ThemeData.dark().copyWith(
   //       primaryColor: OSTColors.primaryDark,

@@ -3,100 +3,48 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ost_digital_application/common/help/assets.dart';
 import 'package:ost_digital_application/page/example/task_app/splash/data.dart';
-import 'package:ost_digital_application/page/example/task_app/tabbar.dart';
 
-class TaskSplashPage extends StatefulWidget {
-  const TaskSplashPage({super.key});
+import 'controller.dart';
 
-  @override
-  State<TaskSplashPage> createState() => _TaskSplashPageState();
-}
+class TaskSplashPage extends StatelessWidget {
+  TaskSplashPage({super.key});
 
-class _TaskSplashPageState extends State<TaskSplashPage> {
-  late PageController controller;
-  late int currentPage;
-  late double offset;
-  late double page;
-  late double currentOffset;
-
-  @override
-  void initState() {
-    controller = PageController(initialPage: 0, keepPage: true)
-      ..addListener(() {
-        offset = controller.offset;
-        page = controller.page!;
-        currentOffset = offset - Get.width * page.truncate();
-        debugPrint('$offset , $currentOffset , $page , $currentPage');
-      });
-
-    currentPage = 0;
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  _onPageChanged(int index) {
-    currentPage = index;
-    setState(() {});
-  }
-
-  _onPressed(int index) {
-    if (index == taskSplashList.length - 1) {
-      _skip();
-    } else {
-      controller.animateToPage(
-        index + 1,
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
-
-  _onTap(int index) {
-    if (index == currentPage) return;
-    controller.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 250),
-      curve: Curves.easeInOut,
-    );
-  }
-
-  _skip() {
-    Get.off(() => const TaskTabBarPage(), fullscreenDialog: false);
-  }
+  final TaskSplashController controller =
+      Get.put<TaskSplashController>(TaskSplashController());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            _buildPageControl(),
-            Expanded(child: _buildPageView()),
-          ],
-        ),
-      ),
+    return GetBuilder<TaskSplashController>(
+      init: controller,
+      initState: (_) {},
+      builder: (_) {
+        return Scaffold(
+          body: SafeArea(
+            child: Column(
+              children: [
+                _buildPageControl(),
+                Expanded(child: _buildPageView()),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
-  PageView _buildPageView() {
+  _buildPageView() {
     return PageView.builder(
-      controller: controller,
+      controller: controller.pageController,
       itemBuilder: (BuildContext context, int index) {
         Map<String, dynamic> data = taskSplashList[index];
         return _TaskSplashItem(
           data: data,
-          onPressed: () => _onPressed(index),
-          onPressedSkip: () => _skip(),
+          onPressed: () => controller.onPressed(index),
+          onPressedSkip: () => controller.skip(),
         );
       },
       itemCount: taskSplashList.length,
-      onPageChanged: (index) => _onPageChanged(index),
+      onPageChanged: (index) => controller.onPageChanged(index),
     );
   }
 
@@ -108,9 +56,9 @@ class _TaskSplashPageState extends State<TaskSplashPage> {
           height: 4,
           child: ListView.builder(
             itemBuilder: (BuildContext context, int index) {
-              bool isCurrentIndex = currentPage == index;
+              bool isCurrentIndex = controller.currentPage == index;
               return GestureDetector(
-                onTap: () => _onTap(index),
+                onTap: () => controller.onTap(index),
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 4),
                   width: isCurrentIndex ? 40 : 20,

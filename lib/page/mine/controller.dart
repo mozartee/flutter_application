@@ -7,7 +7,7 @@ import '../../common/help/index.dart';
 import '../../common/routes/key.dart';
 import '../../common/widget/index.dart';
 
-import '../example/jobapply_view.dart';
+import '../example/job_app/jobapply_view.dart';
 
 class MineController extends GetxController {
   bool profileCompleted = false;
@@ -32,7 +32,7 @@ class MineController extends GetxController {
     // await Future.delayed(const Duration(seconds: 2));
 
     // showSingleAlert(title: 'This is a single action alert');
-    Get.to(() => const TaskSplashPage());
+    Get.to(() => TaskSplashPage());
     update();
   }
 
