@@ -4,12 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/utils/index.dart';
 
-import '../../common/widget/alert.dart';
-import '../../common/widget/textfield.dart';
-import '../../common/routes/index.dart';
-
-import '../../common/utils/gap.dart';
 import '../../common/langs/index.dart';
+import '../../common/routes/index.dart';
+import '../../common/widget/textfield.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
@@ -103,16 +100,13 @@ class SignUp extends StatelessWidget {
                     margin: EdgeInsets.only(top: 20.h),
                     width: double.infinity,
                     height: Constant.buttonHeight,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24.h),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            // verify(context);
-                            FocusScope.of(context).unfocus();
-                            Get.toNamed(Routes.mine);
-                          },
-                          child: Text(Languages.signup.tr)),
-                    ),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          // verify(context);
+                          FocusScope.of(context).unfocus();
+                          Get.toNamed(Routes.mine);
+                        },
+                        child: Text(Languages.signup.tr)),
                   ),
                 ],
               ),

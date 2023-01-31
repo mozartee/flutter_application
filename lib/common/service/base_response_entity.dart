@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_shadowing_type_parameters
 
+import 'package:ost_digital_application/common/utils/index.dart';
+
 import '../entity/index.dart';
 import '../help/index.dart';
 
@@ -36,7 +38,7 @@ class BaseResponseEntity<T> {
       return json.map((e) => User.fromJson(e)).toList() as T;
     }
 
-    Log.d('${json.toString()} is not found');
+    debugLog('${json.toString()} is not found');
     return null;
   }
 
@@ -49,7 +51,7 @@ class BaseResponseEntity<T> {
       return CommentEntity.fromJson(json) as T;
     }
 
-    Log.d('$type is not found');
+    debugLog('$type is not found');
     return null;
   }
 }

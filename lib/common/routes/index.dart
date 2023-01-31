@@ -1,4 +1,5 @@
 library routes;
 
-export 'key.dart';
+export 'keys.dart';
 export 'pages.dart';
+export 'app_routes.dart';

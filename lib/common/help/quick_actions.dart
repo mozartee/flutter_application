@@ -14,14 +14,10 @@ void initQuickActions() {
     quickActions.initialize((String shortcutType) async {
       switch (shortcutType) {
         case firstCutType:
-          {
-            Get.toNamed(Routes.home);
-          }
+          Get.toNamed(Routes.home);
           break;
         case secondCutType:
-          {
-            Get.toNamed(Routes.homeDetail);
-          }
+          Get.toNamed(Routes.homeDetail);
           break;
         default:
           break;
@@ -31,11 +27,11 @@ void initQuickActions() {
     quickActions.setShortcutItems(<ShortcutItem>[
       // icon 需要分别进入Android 和 iOS 中配置 图片
       const ShortcutItem(
-        type: 'first cut',
+        type: firstCutType,
         localizedTitle: '首页',
       ),
       const ShortcutItem(
-        type: 'second cut',
+        type: secondCutType,
         localizedTitle: '发现',
       ),
     ]);

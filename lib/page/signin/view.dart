@@ -66,23 +66,11 @@ class Signin extends GetView<SigninController> {
               ),
               child: Shimmer.fromColors(
                 baseColor: Colors.white,
-                highlightColor: Colors.orange,
+                highlightColor: Colors.red,
                 child: Text(Languages.signin.tr),
               ),
             ),
           ),
-          // SizedBox(
-          //   width: double.infinity,
-          //   height: Constant.buttonHeight,
-          //   child: ElevatedButton(
-          //     onPressed: () => controller.tapSignin(context),
-          //     child: Shimmer.fromColors(
-          //       baseColor: Colors.white,
-          //       highlightColor: Colors.orange,
-          //       child: Text(Languages.signin.tr),
-          //     ),
-          //   ),
-          // ),
           Gap.h.dp4,
           RichText(
             text: TextSpan(

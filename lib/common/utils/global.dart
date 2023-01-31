@@ -10,7 +10,6 @@ class Global {
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
     await SpUtil.getInstance();
-    Log.init();
     Loading();
     initQuickActions();
     Refresh.init();

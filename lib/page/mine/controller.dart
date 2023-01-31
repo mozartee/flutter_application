@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:ost_digital_application/page/example/task_app/splash/splash.dart';
 
 import '../../common/help/index.dart';
-import '../../common/routes/key.dart';
+import '../../common/routes/keys.dart';
 import '../../common/widget/index.dart';
 
 import '../example/job_app/jobapply_view.dart';

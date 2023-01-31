@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flustars_flutter3/flustars_flutter3.dart';
+import 'package:ost_digital_application/common/utils/index.dart';
 
 import '../../../common/extension/index.dart';
 import '../../help/index.dart';
@@ -24,7 +25,7 @@ class TokenInterceptor extends Interceptor {
             as Map<String, dynamic>)['access_token'] as String;
       }
     } catch (error) {
-      Log.e('刷新token失败');
+      debugLog('刷新token失败');
     }
     return null;
   }
@@ -33,9 +34,9 @@ class TokenInterceptor extends Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
     //401代表token过期
     if (response.statusCode == HttpError.unauthorized) {
-      Log.d('-----------自动刷新Token------------');
+      debugLog('-----------自动刷新Token------------');
       final String? accessToken = await getToken();
-      Log.e('-----------NewToken: $accessToken ------------');
+      debugLog('-----------NewToken: $accessToken ------------');
       SpUtil.putString(TokenKey.accessToken, accessToken.nullSafe);
 
       if (accessToken != null) {
@@ -49,7 +50,7 @@ class TokenInterceptor extends Interceptor {
         );
 
         try {
-          Log.e('----------- 重新请求接口 ------------');
+          debugLog('----------- 重新请求接口 ------------');
 
           /// 避免重复执行拦截器，使用tokenDio
           final Response<dynamic> response = await _tokenDio!.request<dynamic>(

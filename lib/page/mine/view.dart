@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:ost_digital_application/common/routes/index.dart';
 import 'package:ost_digital_application/page/mine/controller.dart';
 import 'package:ost_digital_application/page/mine/widgets/body.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../common/help/assets.dart';
-import '../../common/langs/index.dart';
 
 class Mine extends GetView<MineController> {
   const Mine({Key? key}) : super(key: key);
@@ -18,6 +18,19 @@ class Mine extends GetView<MineController> {
         return Scaffold(
           appBar: AppBar(
             title: controller.showInfoOnBar ? _title : null,
+            leading: Tooltip(
+              message: 'Show web view in Chorme/Safari',
+              triggerMode: TooltipTriggerMode.longPress,
+              child: IconButton(
+                icon: const Icon(Icons.web_rounded),
+                onPressed: () async {
+                  const urlString = 'https://www.baidu.com';
+                  if (await canLaunchUrlString(urlString)) {
+                    await launchUrlString(urlString);
+                  }
+                },
+              ),
+            ),
             actions: [
               IconButton(
                 onPressed: () {
@@ -34,7 +47,7 @@ class Mine extends GetView<MineController> {
   }
 
   Widget? get _title => Row(
-    mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Stack(
             alignment: Alignment.center,
@@ -55,11 +68,6 @@ class Mine extends GetView<MineController> {
               ),
             ],
           ),
-          // const Padding(padding: EdgeInsets.only(top: 16)),
-          // Text(
-          //   'Raffialdo Bay',
-          //   style: Get.theme.textTheme.bodySmall,
-          // ),
         ],
       );
 }

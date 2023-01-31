@@ -11,7 +11,7 @@ class Constant {
   static double iconSize = 30.0.h;
 
   /// button height
-  static double buttonHeight = 50.h;
+  static double buttonHeight = 40.h;
 
   /// http connect time
   static const httpConnectTime = 10000;

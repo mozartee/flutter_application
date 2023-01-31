@@ -1,65 +1,64 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:get/get.dart';
-import 'package:ost_digital_application/page/mine/bindings.dart';
 
+import 'app_routes.dart';
+import '../middlewares/index.dart';
 import '../../page/home/index.dart';
 import '../../page/home_detail/view.dart';
 import '../../page/mine/index.dart';
 import '../../page/setting/index.dart';
 import '../../page/signin/index.dart';
 import '../../page/signup/index.dart';
-import '../../page/splash/splash.dart';
 import '../../page/tabbar/tabbar.dart';
-import '../middlewares/index.dart';
-import 'index.dart';
+import '../../page/splash/splash.dart';
 
-List<GetPage> getPages() => [
+List<GetPage> pages() => [
       GetPage(
-        name: Routes.splash,
+        name: AppRoutes.splash,
         page: () => Splash(),
         middlewares: [WelcomeMiddleware(priority: 1)],
       ),
       GetPage(
-        name: Routes.tabbar,
+        name: AppRoutes.tabbar,
         page: () => TabbarPage(),
         middlewares: [AuthMiddleware(priority: 1)],
       ),
       GetPage(
-        name: Routes.signin,
+        name: AppRoutes.signin,
         page: () => Signin(),
         binding: SigninBingding(),
       ),
       GetPage(
-        name: Routes.signup,
+        name: AppRoutes.signup,
         page: () => SignUp(),
       ),
       GetPage(
-        name: Routes.home,
+        name: AppRoutes.home,
         page: () => const HomePage(),
         binding: HomeBinding(),
       ),
       GetPage(
-        name: Routes.homeDetail,
+        name: AppRoutes.homeDetail,
         page: () => HomeDetail(),
       ),
       GetPage(
-        name: Routes.mine,
+        name: AppRoutes.mine,
         page: () => Mine(),
         binding: MineBinding(),
       ),
       GetPage(
-        name: Routes.setting,
+        name: AppRoutes.setting,
         page: () => Setting(),
         binding: SettingBinding(),
       ),
       GetPage(
-        name: Routes.themeChange,
+        name: AppRoutes.themeChange,
         page: () => ThemeChange(),
         binding: ThemeChangeBindings(),
       ),
       GetPage(
-        name: Routes.languageChange,
+        name: AppRoutes.languageChange,
         page: () => LanguageChange(),
         binding: LanguageChangeBinding(),
       ),

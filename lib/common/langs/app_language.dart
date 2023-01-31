@@ -3,9 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../help/shared_preference.dart';
-import 'index.dart';
+import 'keys.dart';
+import 'en_US.dart';
+import 'zh_CN.dart';
 
-class LanguageTranslations extends Translations {
+class AppLanguage {
+  static final transitions = _LanguageTranslation();
+  static final locale = _LanguageTranslation.locale;
+  static const fallbackLocale = _LanguageTranslation.fallbackLocale;
+}
+
+class _LanguageTranslation extends Translations {
+  static const _chineseLocale = Locale('zh', 'CN');
+  static const _englishLocale = Locale('en', 'US');
+
+  // 默认，若locale不存在，则显示这个
+  static const fallbackLocale = _chineseLocale;
+
   static Locale? get locale {
     String? language = SpUtil.getString(AppLanguageKey.language);
     if (language != null && language.isNotEmpty) {
@@ -32,12 +46,6 @@ class LanguageTranslations extends Translations {
       return _chineseLocale;
     }
   }
-
-  static const _chineseLocale = Locale('zh', 'CN');
-  static const _englishLocale = Locale('en', 'US');
-
-  // 默认，若locale不存在，则显示这个
-  static const fallbackLocale = Locale('zh', 'CN');
 
   @override
   Map<String, Map<String, String>> get keys => {

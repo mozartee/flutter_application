@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ost_digital_application/page/example/task_app/home/data.dart';
 
 import 'data.dart';
 
@@ -11,7 +10,7 @@ class TaskAddPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F4F5),
+        backgroundColor: taskAppBarBackground,
         title: Text(
           'Add new task',
           style: Get.theme.textTheme.bodyLarge,
@@ -39,9 +38,9 @@ class TaskAddPage extends StatelessWidget {
     return Container(
       height: 60,
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      decoration: const BoxDecoration(
-        color: Color(0xFFF1F4F5),
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: taskAppBarBackground,
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),

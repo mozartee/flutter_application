@@ -7,16 +7,16 @@ import 'index.dart';
 String? get _fontFamily => sourceHanFontFamily;
 
 class OSTTextStyle {
-  static TextStyle ts12 = TextStyle(fontSize: FontSize.sp12);
-  static TextStyle textSize16 = TextStyle(fontSize: FontSize.sp16);
+  static TextStyle ts12 = TextStyle(fontSize: 12.sp);
+  static TextStyle textSize16 = TextStyle(fontSize: 16.sp);
   static TextStyle textBold14 =
-      TextStyle(fontSize: FontSize.sp14, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold);
   static TextStyle textBold16 =
-      TextStyle(fontSize: FontSize.sp16, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold);
   static TextStyle textBold18 =
-      TextStyle(fontSize: FontSize.sp18, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold);
   static TextStyle textBold24 =
-      TextStyle(fontSize: FontSize.sp24, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold);
 
   static TextStyle navTitle = TextStyle(
     fontSize: 17.sp,

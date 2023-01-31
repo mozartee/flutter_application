@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../common/routes/key.dart';
+import '../../common/routes/keys.dart';
 import 'index.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,9 +1,11 @@
+import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flustars_flutter3/flustars_flutter3.dart';
-
 import '../help/index.dart';
-import 'index.dart';
+
+class AppThemeDataMode {
+  static get themeMode => currentThemeMode();
+}
 
 extension ThemeModeExtension on ThemeMode {
   String get value => <String>['System', 'Light', 'Dark'][index];
@@ -19,14 +21,4 @@ ThemeMode currentThemeMode() {
     default:
       return ThemeMode.system;
   }
-}
-
-class ThemeDataMode {
-  static get current => currentThemeMode();
-}
-
-extension ThemeDataExtension on ThemeData {
-  ThemeData get light => ThemeDataLight.theme;
-  ThemeData get dark => ThemeDataDark.theme;
-  ThemeData get system => ThemeDataSysytem.theme;
 }

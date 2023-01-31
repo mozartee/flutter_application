@@ -4,6 +4,8 @@ import 'package:ost_digital_application/page/example/task_app/calendar/controlle
 import 'package:ost_digital_application/page/example/task_app/home/data.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../add_task/data.dart';
+
 class TaskCalendarPage extends StatelessWidget {
   TaskCalendarPage({super.key});
 
@@ -13,7 +15,7 @@ class TaskCalendarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F4F5),
+        backgroundColor: taskAppBarBackground,
         automaticallyImplyLeading: false,
         centerTitle: false,
         titleSpacing: 20,
@@ -31,9 +33,9 @@ class TaskCalendarPage extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFF1F4F5),
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  color: taskAppBarBackground,
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(20.0),
                     bottomRight: Radius.circular(20.0),
                   ),
@@ -120,16 +122,16 @@ class _TaskCalendarItem extends StatelessWidget {
           Column(
             children: [
               Container(
-                width: isLatest == true ? 16 : 10,
-                height: isLatest == true ? 16 : 10,
+                width: isLatest == true ? 14 : 8,
+                height: isLatest == true ? 14 : 8,
                 decoration: ShapeDecoration(
                   shape: const CircleBorder(),
                   color: isLatest == true ? Colors.black : Colors.black26,
                 ),
                 child: Center(
                   child: Container(
-                    width: isLatest == true ? 10 : 0,
-                    height: isLatest == true ? 10 : 0,
+                    width: isLatest == true ? 8 : 0,
+                    height: isLatest == true ? 8 : 0,
                     decoration: ShapeDecoration(
                       shape: const CircleBorder(),
                       color:
@@ -142,60 +144,59 @@ class _TaskCalendarItem extends StatelessWidget {
                 width: 1,
                 // height: 80,
                 // height: double.infinity,
+                padding: EdgeInsets.symmetric(vertical: 50),
                 color: isLatest == true ? Colors.black : Colors.black26,
               ),
             ],
           ),
           const SizedBox(width: 10),
-          Expanded(
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 20),
-              padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
-              decoration: BoxDecoration(
-                color: isLatest == true ? Colors.black : taskYellow,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        subject,
-                        style: Get.theme.textTheme.bodyMedium!.copyWith(
-                            color:
-                                isLatest == true ? Colors.white : Colors.black),
-                      ),
-                      const SizedBox(width: 30),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.timer,
-                            size: 12,
-                            color:
-                                isLatest == true ? Colors.white : Colors.black,
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            hours,
-                            style: Get.theme.textTheme.labelMedium!.copyWith(
-                                color: isLatest == true
-                                    ? Colors.white
-                                    : Colors.black),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    content,
-                    style: Get.theme.textTheme.bodySmall!
-                        .copyWith(color: Colors.grey),
-                  ),
-                ],
-              ),
+          Container(
+            // margin: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(left: 20,right: 20, top: 20, bottom: 20),
+            decoration: BoxDecoration(
+              color: isLatest == true ? Colors.black : taskYellow,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      subject,
+                      style: Get.theme.textTheme.bodyMedium!.copyWith(
+                          color:
+                              isLatest == true ? Colors.white : Colors.black),
+                    ),
+                    const SizedBox(width: 30),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.timer,
+                          size: 12,
+                          color:
+                              isLatest == true ? Colors.white : Colors.black,
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          hours,
+                          style: Get.theme.textTheme.labelMedium!.copyWith(
+                              color: isLatest == true
+                                  ? Colors.white
+                                  : Colors.black),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  content,
+                  style: Get.theme.textTheme.bodySmall!
+                      .copyWith(color: Colors.grey),
+                ),
+              ],
             ),
           ),
         ],
