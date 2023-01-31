@@ -28,8 +28,7 @@ class ErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: sized_box_for_whitespace
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: double.infinity,
       child: Center(
@@ -61,7 +60,13 @@ class ErrorPage extends StatelessWidget {
 
   Widget get _button => showButton == true
       ? TextButton(
-          onPressed: onPressed,
+          onPressed: () {
+            onPressed;
+          },
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.resolveWith(
+                (states) => Get.theme.colorScheme.primary),
+          ),
           child: Text(buttonText ?? Languages.loadingRetry.tr),
         )
       : Container();

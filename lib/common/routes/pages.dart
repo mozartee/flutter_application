@@ -2,21 +2,21 @@
 
 import 'package:get/get.dart';
 
-import 'app_routes.dart';
-import '../middlewares/index.dart';
 import '../../page/home/index.dart';
 import '../../page/home_detail/view.dart';
 import '../../page/mine/index.dart';
 import '../../page/setting/index.dart';
 import '../../page/signin/index.dart';
 import '../../page/signup/index.dart';
-import '../../page/tabbar/tabbar.dart';
 import '../../page/splash/splash.dart';
+import '../../page/tabbar/tabbar.dart';
+import '../middlewares/index.dart';
+import 'app_routes.dart';
 
 List<GetPage> pages() => [
       GetPage(
         name: AppRoutes.splash,
-        page: () => Splash(),
+        page: () => SplashPage(),
         middlewares: [WelcomeMiddleware(priority: 1)],
       ),
       GetPage(

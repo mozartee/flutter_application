@@ -1,8 +1,9 @@
+import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
-import '../tabbar.dart';
+import '../../../../common/help/index.dart';
+import '../../../../common/routes/index.dart';
 import 'data.dart';
 
 class TaskSplashController extends GetxController {
@@ -60,6 +61,7 @@ class TaskSplashController extends GetxController {
   }
 
   skip() {
-    Get.off(() => const TaskTabBarPage(), fullscreenDialog: false);
+    Get.offNamed(AppRoutes.signin);
+    SpUtil.putBool(PageKey.splash, true);
   }
 }

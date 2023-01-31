@@ -31,21 +31,21 @@ class Setting extends GetView<SettingController> {
                 text: Languages.languagechange.tr,
                 onTap: () => Get.toNamed(Routes.languageChange),
               ),
-              Expanded(
-                child: Container(
-                  height: Constant.buttonHeight,
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
-                  child: ElevatedButton(
-                    onPressed: () => controller.signout(),
-                    child: Text(Languages.signout.tr),
-                  ),
-                  // TextButton(
-                  //   onPressed: () => controller.signout(),
-                  //   child: Text(Languages.signout.tr),
-                  // ),
-                ),
-              ),
+              // Expanded(
+              //   child: Container(
+              //     height: Constant.buttonHeight,
+              //     margin:
+              //         EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
+              //     child: ElevatedButton(
+              //       onPressed: () => controller.signout(),
+              //       child: Text(Languages.signout.tr),
+              //     ),
+              //     // TextButton(
+              //     //   onPressed: () => controller.signout(),
+              //     //   child: Text(Languages.signout.tr),
+              //     // ),
+              //   ),
+              // ),
             ],
           );
         },

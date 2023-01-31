@@ -1,13 +1,13 @@
-import 'package:flustars_flutter3/flustars_flutter3.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
-import 'package:ost_digital_application/page/example/task_app/splash/splash.dart';
+import 'package:flustars_flutter3/flustars_flutter3.dart';
 
 import '../../common/help/index.dart';
 import '../../common/routes/keys.dart';
 import '../../common/widget/index.dart';
-
 import '../example/job_app/jobapply_view.dart';
+import '../example/task_app/tabbar.dart';
 
 class MineController extends GetxController {
   bool profileCompleted = false;
@@ -32,7 +32,7 @@ class MineController extends GetxController {
     // await Future.delayed(const Duration(seconds: 2));
 
     // showSingleAlert(title: 'This is a single action alert');
-    Get.to(() => TaskSplashPage());
+    Get.to(() => const TaskTabBarPage());
     update();
   }
 
@@ -40,8 +40,8 @@ class MineController extends GetxController {
     // await Future.delayed(const Duration(seconds: 2));
 
     showTextAlert(
-      title: 'Get The Alert',
-      content: 'Push your face to your name',
+      title: 'Alert',
+      content: 'Click anywhere to dismiss',
     );
     update();
   }

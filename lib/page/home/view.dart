@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage>
             arguments: {"name": "Jaxo", "years": 19},
           );
         },
-        icon: const Icon(Icons.more_horiz),
+        icon: const Icon(Icons.details),
       ),
     ];
   }

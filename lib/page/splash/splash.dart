@@ -1,55 +1,164 @@
 import 'package:flutter/material.dart';
-
-import 'package:flustars_flutter3/flustars_flutter3.dart' show SpUtil;
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ost_digital_application/common/help/assets.dart';
 
-import '../../common/help/assets.dart';
-import '../../common/help/device.dart';
-import '../../common/routes/index.dart';
-import '../../common/langs/keys.dart';
-import '../../common/help/shared_preference.dart';
+import 'controller.dart';
+import 'data.dart';
 
-class Splash extends StatelessWidget {
-  Splash({Key? key}) : super(key: key);
+class SplashPage extends StatelessWidget {
+  SplashPage({super.key});
 
-  final List<String> _guideList = ['app_start_1', 'app_start_2', 'app_start_3'];
+  final TaskSplashController controller =
+      Get.put<TaskSplashController>(TaskSplashController());
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, designSize: designSize);
-
-    return Swiper(
-      key: const Key('swiper'),
-      loop: false,
-      itemCount: _guideList.length,
-      itemBuilder: (_, index) => _buildWidget(index),
+    return GetBuilder<TaskSplashController>(
+      init: controller,
+      initState: (_) {},
+      builder: (_) {
+        return Scaffold(
+          body: SafeArea(
+            child: Column(
+              children: [
+                _buildPageControl(),
+                Expanded(child: _buildPageView()),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildWidget(int index) => index != _guideList.length - 1
-      ? Assets.loadImage(_guideList[index], format: ImageFormat.webp)
-      : Stack(
-          children: [
-            Assets.loadImage(_guideList[index], format: ImageFormat.webp),
-            Align(
-              alignment: Alignment(0, 0.59.h),
-              child: SizedBox(
-                width: 120.w,
-                height: 40.h,
-                child: TextButton(
-                  onPressed: _onPressed,
-                  child: Text(Languages.splashbutton.tr),
+  _buildPageView() {
+    return PageView.builder(
+      controller: controller.pageController,
+      itemBuilder: (BuildContext context, int index) {
+        Map<String, dynamic> data = taskSplashList[index];
+        return _TaskSplashItem(
+          data: data,
+          onPressed: () => controller.onPressed(index),
+          onPressedSkip: () => controller.skip(),
+        );
+      },
+      itemCount: taskSplashList.length,
+      onPageChanged: (index) => controller.onPageChanged(index),
+    );
+  }
+
+  SizedBox _buildPageControl() {
+    return SizedBox(
+      height: 40,
+      child: UnconstrainedBox(
+        child: SizedBox(
+          height: 4,
+          child: ListView.builder(
+            itemBuilder: (BuildContext context, int index) {
+              bool isCurrentIndex = controller.currentPage == index;
+              return GestureDetector(
+                onTap: () => controller.onTap(index),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: isCurrentIndex ? 40 : 20,
+                  decoration: ShapeDecoration(
+                    shape: const StadiumBorder(),
+                    color: isCurrentIndex ? Colors.black : Colors.grey[300],
+                  ),
                 ),
+              );
+            },
+            itemCount: taskSplashList.length,
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TaskSplashItem extends StatelessWidget {
+  const _TaskSplashItem({
+    Key? key,
+    required this.data,
+    this.onPressed,
+    this.onPressedSkip,
+  }) : super(key: key);
+
+  final Map<String, dynamic> data;
+  final VoidCallback? onPressed;
+  final VoidCallback? onPressedSkip;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: Assets.loadImage(
+            data['url'],
+            format: ImageFormat.svg,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 80.0),
+          child: Text(
+            data['title'],
+            textAlign: TextAlign.center,
+            style: Get.theme.textTheme.titleMedium!.copyWith(
+              fontWeight: FontWeight.w700,
+              fontSize: 24,
+            ),
+          ),
+        ),
+        const SizedBox(height: 60),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 36),
+          height: 50,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+          child: TextButton(
+            onPressed: onPressed,
+            style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.resolveWith((states) => Colors.black),
+              foregroundColor:
+                  MaterialStateProperty.resolveWith((states) => Colors.white),
+              shape: MaterialStateProperty.resolveWith((states) =>
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16))),
+              padding: MaterialStateProperty.resolveWith(
+                  (states) => const EdgeInsets.symmetric(horizontal: 16.0)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Continue',
+                  style: GoogleFonts.ubuntu().copyWith(
+                    fontSize: 14,
+                  ),
+                ),
+                const Icon(
+                  Icons.arrow_circle_right,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+          ),
+        ),
+        Center(
+          child: TextButton(
+            onPressed: onPressedSkip,
+            child: Text(
+              'Skip',
+              style: GoogleFonts.ubuntu().copyWith(
+                color: Colors.grey[700],
               ),
             ),
-          ],
-        );
-
-  void _onPressed() {
-    // Get.offNamed(Share.signin == true ? Routes.tabbar : Routes.signin);
-    Get.offNamed(Routes.tabbar);
-    SpUtil.putBool(PageKey.splash, true);
+          ),
+        )
+      ],
+    );
   }
 }

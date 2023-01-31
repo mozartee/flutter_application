@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:ost_digital_application/common/widget/index.dart';
-import 'package:ost_digital_application/common/widget/page_load_status/load.dart';
 import 'package:ost_digital_application/page/home_detail/controller.dart';
 
 class HomeDetailListPage extends StatefulWidget {

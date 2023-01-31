@@ -104,7 +104,7 @@ class SignUp extends StatelessWidget {
                         onPressed: () {
                           // verify(context);
                           FocusScope.of(context).unfocus();
-                          Get.toNamed(Routes.mine);
+                          Get.offAllNamed(Routes.tabbar);
                         },
                         child: Text(Languages.signup.tr)),
                   ),

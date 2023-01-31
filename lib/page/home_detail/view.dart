@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:get/get.dart';
-import 'package:ost_digital_application/page/home_detail/controller.dart';
-import 'package:ost_digital_application/page/home_detail/widgets/list_page.dart';
 
 import '../../common/help/assets.dart';
+import 'widgets/list_page.dart';
 
 class HomeDetail extends StatefulWidget {
   const HomeDetail({Key? key}) : super(key: key);
