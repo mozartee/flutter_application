@@ -31,16 +31,16 @@ class _PageList extends GetView<HomeDetailController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeDetailController>(
-        init: HomeDetailController(),
-        builder: (child) {
-          return controller.obx(
-            (state) => _loadPage(),
-            onLoading: const LoadPage(),
-            onEmpty: const EmptyPage(),
-            onError: (_) =>
-                ErrorPage(onPressed: () => controller.updateState()),
-          );
-        });
+      init: HomeDetailController(),
+      builder: (child) {
+        return controller.obx(
+          (state) => _loadPage(),
+          onLoading: const LoadPage(),
+          onEmpty: const EmptyPage(),
+          onError: (_) => ErrorPage(onPressed: () => controller.updateState()),
+        );
+      },
+    );
   }
 
   EasyRefresh _loadPage() {

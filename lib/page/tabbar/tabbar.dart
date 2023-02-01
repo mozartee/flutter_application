@@ -1,7 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../common/langs/index.dart';
 import '../../page/home/index.dart';
@@ -14,11 +13,11 @@ class TabbarPage extends StatelessWidget {
   final List<Widget> _pages = const [HomePage(), Mine()];
   final List<BottomNavigationBarItem> _items = [
     BottomNavigationBarItem(
-      icon: const  Icon(Icons.whatsapp),
+      icon: const  Icon(CupertinoIcons.house_alt_fill),
       label: Languages.tabbarhome.tr,
     ),
     BottomNavigationBarItem(
-      icon: const FaIcon(FontAwesomeIcons.theRedYeti),
+      icon: const Icon(CupertinoIcons.person_2),
       label: Languages.tabbarmine.tr,
     ),
   ];

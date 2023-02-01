@@ -1,4 +1,3 @@
-import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -30,18 +29,18 @@ class JobDetailPage extends StatelessWidget {
   _buildBody(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: ExtendedNestedScrollView(
-            onlyOneScrollInBody: true,
-            pinnedHeaderSliverHeightBuilder: () {
-              return MediaQuery.of(context).padding.top;
-            },
-            headerSliverBuilder: (context, innerBoxIsScrolled) {
-              return _headerSliverBuilder;
-            },
-            body: _tabbar,
-          ),
-        ),
+        // Expanded(
+        //   child: ExtendedNestedScrollView(
+        //     onlyOneScrollInBody: true,
+        //     pinnedHeaderSliverHeightBuilder: () {
+        //       return MediaQuery.of(context).padding.top;
+        //     },
+        //     headerSliverBuilder: (context, innerBoxIsScrolled) {
+        //       return _headerSliverBuilder;
+        //     },
+        //     body: _tabbar,
+        //   ),
+        // ),
         _bottomBar(context),
       ],
     );
@@ -147,24 +146,24 @@ class JobDetailPage extends StatelessWidget {
   _buildTabbarView() {
     return TabBarView(
       children: [
-        ExtendedVisibilityDetector(
-          uniqueKey: Key(_tabs[0].text ?? '0'),
-          child: Center(
-            child: Assets.loadImage('01', format: ImageFormat.svg),
-          ),
-        ),
-        ExtendedVisibilityDetector(
-          uniqueKey: Key(_tabs[1].text ?? '1'),
-          child: Center(
-            child: Assets.loadImage('02', format: ImageFormat.svg),
-          ),
-        ),
-        ExtendedVisibilityDetector(
-          uniqueKey: Key(_tabs[1].text ?? '1'),
-          child: Center(
-            child: Assets.loadImage('03', format: ImageFormat.svg),
-          ),
-        ),
+        // ExtendedVisibilityDetector(
+        //   uniqueKey: Key(_tabs[0].text ?? '0'),
+        //   child: Center(
+        //     child: Assets.loadImage('01', format: ImageFormat.svg),
+        //   ),
+        // ),
+        // ExtendedVisibilityDetector(
+        //   uniqueKey: Key(_tabs[1].text ?? '1'),
+        //   child: Center(
+        //     child: Assets.loadImage('02', format: ImageFormat.svg),
+        //   ),
+        // ),
+        // ExtendedVisibilityDetector(
+        //   uniqueKey: Key(_tabs[1].text ?? '1'),
+        //   child: Center(
+        //     child: Assets.loadImage('03', format: ImageFormat.svg),
+        //   ),
+        // ),
       ],
     );
   }
